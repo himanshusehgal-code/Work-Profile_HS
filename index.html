@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Himanshu Sehgal | Automation & MIS Expert</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
         :root {
             --bg: #0f172a;
@@ -116,14 +117,16 @@
             margin-bottom: 4.5rem;
             margin-top: 2.5rem;
         }
+        /* Adjusted font size for the longer heading */
         .hero-name {
-            font-size: 2.7rem;
+            font-size: 2.2rem; 
             color: var(--accent);
             font-weight: bold;
             margin-bottom: 2.3rem;
             text-align: center;
             animation: pulse 2s infinite;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
+            max-width: 90%;
         }
         .hero-cards-row {
             display: flex;
@@ -302,6 +305,7 @@
             transform: none;
         }
         
+        /* Spinner CSS */
         .loader {
             border: 3px solid rgba(255,255,255,0.3);
             border-top: 3px solid var(--bg);
@@ -356,6 +360,7 @@
         #contact p a:hover { color: var(--text-light); text-decoration: underline; }
         @media (max-width: 950px) {
             .main { padding: 2rem 0.5rem 2rem 0.5rem; }
+            .hero-name { font-size: 1.8rem; }
         }
         @media (max-width: 768px) {
             body { flex-direction: column; }
@@ -371,6 +376,7 @@
             #skills .skill-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
             .project-carousel { flex-direction: column; align-items: center; }
             .video-card { width: 97vw; min-width: 220px; margin-right: 0; }
+            .hero-name { font-size: 1.6rem; }
         }
         @media (max-width: 480px) {
             .sidebar { flex-direction: column; align-items: center; padding-bottom: 0.5rem; }
@@ -394,7 +400,7 @@
     </div>
     <div class="main">
         <div class="hero">
-            <h1 class="hero-name">Himanshu Sehgal | Automation & MIS Expert</h1>
+            <h1 class="hero-name">Himanshu Sehgal | Business Automation Developer & AI MIS Expert</h1>
             <div class="hero-cards-row">
                 <div class="hero-card">
                     <div class="hero-card-front"><h3>Google Sheets</h3></div>
@@ -673,35 +679,42 @@
             const loader = document.getElementById('pdfLoader');
             const btnText = document.getElementById('pdfBtnText');
             
-            // Check if running locally
-            const currentUrl = window.location.href;
-            if (currentUrl.startsWith('file://') || currentUrl.includes('localhost')) {
-                alert('Playwright API (Render) localhost ya file:// se PDF nahi bana sakta. Pehle is code ko GitHub par live kijiye.');
-                return;
-            }
-
-            // --- IMPORTANT ---
-            // Yahan par endpoint check karein. Aapke FastAPI code mein kya likha hai? 
-            // Agar aapne likha hai @app.get("/"), toh isko '' (blank) rakhein.
-            // Agar @app.get("/pdf") likha hai, toh isko 'pdf' rakhein.
-            const endpoint = ''; // Replace with your exact route if it's not the root path
-            // -----------------
-
-            const apiUrl = `https://support-dashupdata.onrender.com/${endpoint}?url=${encodeURIComponent(currentUrl)}`;
-
+            // Show loading state
             loader.style.display = 'inline-block';
-            btnText.innerText = 'Generating... (Free tier may take 50s)';
+            btnText.innerText = 'Generating PDF...';
             btn.disabled = true;
 
-            // Open the API URL in a new window to trigger the download
-            window.open(apiUrl, '_blank');
+            // Target the entire page to convert
+            const element = document.body;
+            
+            // Hide the buttons temporarily so they don't appear in the PDF
+            const buttonsDiv = document.querySelector('.resume-download-buttons');
+            buttonsDiv.style.display = 'none';
 
-            // Reset the button after a delay so user can try again if needed
-            setTimeout(() => {
+            // html2pdf options
+            const opt = {
+                margin:       [0.2, 0.2, 0.2, 0.2], // Margin around the PDF
+                filename:     'Himanshu_Sehgal_Profile.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, useCORS: true },
+                jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+            };
+
+            // Generate and save
+            html2pdf().set(opt).from(element).save().then(() => {
+                // Restore normal state after download
                 loader.style.display = 'none';
                 btnText.innerText = 'Website Profile';
                 btn.disabled = false;
-            }, 5000);
+                buttonsDiv.style.display = 'flex';
+            }).catch((err) => {
+                console.error("PDF generation failed:", err);
+                loader.style.display = 'none';
+                btnText.innerText = 'Error! Try Again';
+                btn.disabled = false;
+                buttonsDiv.style.display = 'flex';
+                alert("Koi issue aaya PDF banne mein. Please try again.");
+            });
         });
     </script>
 </body>
