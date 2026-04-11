@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Himanshu Sehgal | Automation & MIS Expert</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
         :root {
             --bg: #0f172a;
@@ -271,7 +272,7 @@
             gap: 1.2rem;
             margin: 2.1rem 0 2.2rem 0;
             justify-content: center;
-            flex-wrap: wrap; /* Allows buttons to wrap on small screens */
+            flex-wrap: wrap; 
         }
         .download-btn {
             background: var(--accent);
@@ -285,10 +286,13 @@
             box-shadow: 0 2px 10px var(--card-shadow);
             transition: background 0.22s, color 0.22s, transform 0.17s;
             text-decoration: none;
-            display: inline-block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             letter-spacing: 0.02em;
+            min-width: 200px;
         }
-        .download-btn:hover, .download-btn:focus {
+        .download-btn:hover:not(:disabled) {
             background: var(--button-hover);
             color: var(--text-light);
             transform: translateY(-2px) scale(1.04);
@@ -298,6 +302,23 @@
             cursor: not-allowed;
             transform: none;
         }
+        
+        /* Loading spinner CSS */
+        .loader {
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top: 3px solid var(--bg);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            margin-right: 10px;
+            display: none;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         .resume-section {
             background-color: var(--sidebar-bg);
             padding: 1.5rem 1.5rem 1.5rem 1.5rem;
@@ -361,7 +382,7 @@
         }
     </style>
 </head>
-<body>
+<body id="portfolio-body">
     <div class="sidebar">
         <img class="profile-img" src="https://i.postimg.cc/RJfcGcSS/IMG-20230123-WA0002.jpg" alt="Himanshu Sehgal Profile" />
         <h2>Himanshu Sehgal</h2>
@@ -532,9 +553,14 @@
         <section id="resume">
             <h2>Resume</h2>
             <div class="resume-download-buttons">
-                <a href="https://drive.google.com/file/d/193gyrRHYt46UxRa-VDKIg70doUAoBYPn/view?usp=sharing" class="download-btn" download target="_blank">Static PDF</a>
-                <button id="generatePdfBtn" class="download-btn">Generate Live PDF</button>
+                <a href="https://drive.google.com/file/d/193gyrRHYt46UxRa-VDKIg70doUAoBYPn/view?usp=sharing" class="download-btn" target="_blank">Download Resume</a>
+                
+                <button id="generatePdfBtn" class="download-btn">
+                    <span class="loader" id="pdfLoader"></span>
+                    <span id="pdfBtnText">Website Profile</span>
+                </button>
             </div>
+            
             <div class="resume-section">
                 <h3>Summary</h3>
                 <p>Highly motivated Automation and MIS Expert with X years of experience in optimizing business processes through the strategic implementation of Google Workspace tools, particularly Google Sheets and Apps Script. Proven ability to develop custom solutions that enhance data management, reporting, and communication efficiency for MSMEs and startups.</p>
@@ -644,40 +670,47 @@
     </div>
 
     <script>
-        document.getElementById('generatePdfBtn').addEventListener('click', async () => {
-            const btn = document.getElementById('generatePdfBtn');
-            const originalText = btn.innerText;
+        document.getElementById('generatePdfBtn').addEventListener('click', function() {
+            const btn = this;
+            const loader = document.getElementById('pdfLoader');
+            const btnText = document.getElementById('pdfBtnText');
             
-            // Assuming your FastAPI route is something like /generate-pdf
-            // You may need to change this if your endpoint is named differently (e.g., /pdf)
-            const endpoint = 'generate-pdf'; 
-            
-            const currentUrl = window.location.href;
-            
-            // Check if user is testing locally. Playwright on Render can't access "localhost" or "file://"
-            if (currentUrl.startsWith('file://') || currentUrl.includes('localhost')) {
-                alert('Oops! Your Playwright API on Render cannot access local files. Please host this portfolio live (like on GitHub Pages) for the PDF generation to work.');
-                return;
-            }
-
-            // Visual feedback
-            btn.innerText = 'Generating PDF...';
+            // Show loader, change text, and disable button
+            loader.style.display = 'inline-block';
+            btnText.innerText = 'Generating...';
             btn.disabled = true;
 
-            const apiUrl = `https://support-dashupdata.onrender.com/${endpoint}?url=${encodeURIComponent(currentUrl)}`;
+            // Target the entire body to convert
+            const element = document.getElementById('portfolio-body');
+            
+            // Temporary hide the buttons so they don't show up in the PDF
+            const buttonsDiv = document.querySelector('.resume-download-buttons');
+            buttonsDiv.style.display = 'none';
 
-            try {
-                // We're opening the API URL in a new window which should prompt the download 
-                // since the FastAPI response returns media_type="application/pdf"
-                window.open(apiUrl, '_blank');
-            } catch (error) {
-                console.error("PDF generation failed", error);
-                alert('Something went wrong trying to contact your Render API.');
-            } finally {
-                // Reset button state
-                btn.innerText = originalText;
+            // Configure html2pdf options
+            const opt = {
+                margin:       [0.5, 0.5, 0.5, 0.5], // Top, Left, Bottom, Right
+                filename:     'Himanshu_Sehgal_Profile.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, useCORS: true, scrollY: 0 },
+                jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+            };
+
+            // Generate and download
+            html2pdf().set(opt).from(element).save().then(() => {
+                // Restore button state and visibility after download
+                loader.style.display = 'none';
+                btnText.innerText = 'Website Profile';
                 btn.disabled = false;
-            }
+                buttonsDiv.style.display = 'flex';
+            }).catch((err) => {
+                console.error("PDF generation failed:", err);
+                loader.style.display = 'none';
+                btnText.innerText = 'Error! Try Again';
+                btn.disabled = false;
+                buttonsDiv.style.display = 'flex';
+                alert("Koi issue aaya PDF banne mein. Please try again.");
+            });
         });
     </script>
 </body>
