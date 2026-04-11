@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Himanshu Sehgal | Business Automation Developer & AI MIS Expert</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
         :root {
             --bg: #0f172a;
@@ -210,12 +211,14 @@
             justify-content: center;
             gap: 2.2rem;
             padding-bottom: 0.7rem;
+            align-items: stretch; /* Ensures cards match height if side-by-side */
         }
         
-        /* Website Cards CSS */
+        /* UPDATED: Website Cards CSS */
         .website-card {
             width: 380px; 
-            min-height: 420px;
+            height: auto; /* Lets the card expand dynamically */
+            min-height: 480px; /* Gives it a good base height */
             border-radius: 19px;
             box-shadow: 0 8px 24px var(--card-shadow);
             background-color: var(--sidebar-bg);
@@ -231,24 +234,31 @@
             box-shadow: 0 16px 40px var(--card-shadow), 0 0 0 2px var(--accent);
             transform: translateY(-5px) scale(1.02);
         }
-        /* Adjusted container for live iframes */
         .website-image-container {
             width: 100%;
-            height: 250px;
+            height: 220px;
             border-radius: 13px;
             overflow: hidden;
             margin-bottom: 1.2rem;
             border: 2px solid var(--accent);
-            background-color: #fff; /* White background better for websites */
+            background-color: #0f172a; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-        /* Iframe styling */
-        .website-image-container iframe {
+        /* Style for the auto-generated screenshot */
+        .website-image-container img {
             width: 100%;
             height: 100%;
-            border: none;
+            object-fit: cover;
+            object-position: top; /* Ensures the top of the website shows */
+            transition: transform 0.4s ease;
+        }
+        .website-card:hover .website-image-container img {
+            transform: scale(1.05); /* Slight zoom on hover */
         }
         .website-card h3 {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             color: var(--accent);
             margin-bottom: 0.8rem;
             text-align: center;
@@ -262,7 +272,10 @@
             color: var(--text-light);
             margin-bottom: 1.5rem;
             line-height: 1.6;
-            flex-grow: 1; 
+            flex-grow: 1; /* Pushes the button to the bottom perfectly */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         /* Existing Video Card CSS */
@@ -355,6 +368,22 @@
             transform: translateY(-2px) scale(1.04);
         }
         
+        /* Spinner CSS */
+        .loader {
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top: 3px solid var(--bg);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            margin-right: 10px;
+            display: none;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         .resume-section {
             background-color: var(--sidebar-bg);
             padding: 1.5rem 1.5rem 1.5rem 1.5rem;
@@ -410,7 +439,7 @@
             .hero-card { width: 96vw; min-width: 240px; margin: 0.7rem 0.2rem; }
             #skills .skill-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
             .project-carousel { flex-direction: column; align-items: center; }
-            .video-card, .website-card { width: 97vw; min-width: 220px; margin-right: 0; }
+            .video-card, .website-card { width: 97vw; min-width: 220px; margin-right: 0; height: auto; }
             .hero-name { font-size: 1.6rem; }
         }
         @media (max-width: 480px) {
@@ -556,7 +585,7 @@
                     
                     <div class="website-card">
                         <div class="website-image-container">
-                            <iframe src="https://dashupdata.live" title="Dashupdata Website"></iframe>
+                            <img src="https://image.thum.io/get/width/800/crop/800/https://dashupdata.live" alt="Dashupdata Live Preview" loading="lazy">
                         </div>
                         <h3>Dashupdata</h3>
                         <p class="website-desc">A comprehensive SaaS platform and interactive data dashboard tailored for business automation. It streamlines complex workflows, visualizes key performance metrics in real-time, and empowers teams to make data-driven decisions effortlessly without manual interventions.</p>
@@ -565,7 +594,7 @@
 
                     <div class="website-card">
                         <div class="website-image-container">
-                            <iframe src="https://www.driiva.in/" title="D'RIIVA Website"></iframe>
+                            <img src="https://image.thum.io/get/width/800/crop/800/https://www.driiva.in/" alt="D'RIIVA Live Preview" loading="lazy">
                         </div>
                         <h3>D'RIIVA</h3>
                         <p class="website-desc">An exclusive fashion brand and premium e-commerce platform dedicated specifically to women's clothing. It features a seamless online shopping experience, elegant UI design, secure checkout, and showcases the latest trends in women's apparel.</p>
@@ -618,6 +647,11 @@
             <h2>Resume</h2>
             <div class="resume-download-buttons">
                 <a href="https://drive.google.com/file/d/193gyrRHYt46UxRa-VDKIg70doUAoBYPn/view?usp=sharing" class="download-btn" target="_blank">Download Resume</a>
+                
+                <button id="generatePdfBtn" class="download-btn">
+                    <span class="loader" id="pdfLoader"></span>
+                    <span id="pdfBtnText">Download Profile</span>
+                </button>
             </div>
             
             <div class="resume-section">
@@ -727,5 +761,44 @@
             <p>YouTube: <a href="https://www.youtube.com/@sehgal_sheet_tricks3306" target="_blank">youtube.com/@sehgal_sheet_tricks3306</a></p>
         </section>
     </div>
+
+    <script>
+        document.getElementById('generatePdfBtn').addEventListener('click', function() {
+            const btn = this;
+            const loader = document.getElementById('pdfLoader');
+            const btnText = document.getElementById('pdfBtnText');
+            
+            loader.style.display = 'inline-block';
+            btnText.innerText = 'Generating PDF...';
+            btn.disabled = true;
+
+            const element = document.body;
+            
+            const buttonsDiv = document.querySelector('.resume-download-buttons');
+            buttonsDiv.style.display = 'none';
+
+            const opt = {
+                margin:       [0.2, 0.2, 0.2, 0.2], 
+                filename:     'Himanshu_Sehgal_Profile.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, useCORS: true },
+                jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+            };
+
+            html2pdf().set(opt).from(element).save().then(() => {
+                loader.style.display = 'none';
+                btnText.innerText = 'Download Profile';
+                btn.disabled = false;
+                buttonsDiv.style.display = 'flex';
+            }).catch((err) => {
+                console.error("PDF generation failed:", err);
+                loader.style.display = 'none';
+                btnText.innerText = 'Error! Try Again';
+                btn.disabled = false;
+                buttonsDiv.style.display = 'flex';
+                alert("Koi issue aaya PDF banne mein. Please try again.");
+            });
+        });
+    </script>
 </body>
 </html>
