@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Himanshu Sehgal | Business Automation Developer & AI MIS Expert </title>
+    <title>Himanshu Sehgal | Automation & MIS Expert</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
         :root {
             --bg: #0f172a;
@@ -303,7 +302,6 @@
             transform: none;
         }
         
-        /* Loading spinner CSS */
         .loader {
             border: 3px solid rgba(255,255,255,0.3);
             border-top: 3px solid var(--bg);
@@ -675,42 +673,35 @@
             const loader = document.getElementById('pdfLoader');
             const btnText = document.getElementById('pdfBtnText');
             
-            // Show loader, change text, and disable button
+            // Check if running locally
+            const currentUrl = window.location.href;
+            if (currentUrl.startsWith('file://') || currentUrl.includes('localhost')) {
+                alert('Playwright API (Render) localhost ya file:// se PDF nahi bana sakta. Pehle is code ko GitHub par live kijiye.');
+                return;
+            }
+
+            // --- IMPORTANT ---
+            // Yahan par endpoint check karein. Aapke FastAPI code mein kya likha hai? 
+            // Agar aapne likha hai @app.get("/"), toh isko '' (blank) rakhein.
+            // Agar @app.get("/pdf") likha hai, toh isko 'pdf' rakhein.
+            const endpoint = ''; // Replace with your exact route if it's not the root path
+            // -----------------
+
+            const apiUrl = `https://support-dashupdata.onrender.com/${endpoint}?url=${encodeURIComponent(currentUrl)}`;
+
             loader.style.display = 'inline-block';
-            btnText.innerText = 'Generating...';
+            btnText.innerText = 'Generating... (Free tier may take 50s)';
             btn.disabled = true;
 
-            // Target the entire body to convert
-            const element = document.getElementById('portfolio-body');
-            
-            // Temporary hide the buttons so they don't show up in the PDF
-            const buttonsDiv = document.querySelector('.resume-download-buttons');
-            buttonsDiv.style.display = 'none';
+            // Open the API URL in a new window to trigger the download
+            window.open(apiUrl, '_blank');
 
-            // Configure html2pdf options
-            const opt = {
-                margin:       [0.5, 0.5, 0.5, 0.5], // Top, Left, Bottom, Right
-                filename:     'Himanshu_Sehgal_Profile.pdf',
-                image:        { type: 'jpeg', quality: 0.98 },
-                html2canvas:  { scale: 2, useCORS: true, scrollY: 0 },
-                jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
-            };
-
-            // Generate and download
-            html2pdf().set(opt).from(element).save().then(() => {
-                // Restore button state and visibility after download
+            // Reset the button after a delay so user can try again if needed
+            setTimeout(() => {
                 loader.style.display = 'none';
                 btnText.innerText = 'Website Profile';
                 btn.disabled = false;
-                buttonsDiv.style.display = 'flex';
-            }).catch((err) => {
-                console.error("PDF generation failed:", err);
-                loader.style.display = 'none';
-                btnText.innerText = 'Error! Try Again';
-                btn.disabled = false;
-                buttonsDiv.style.display = 'flex';
-                alert("Koi issue aaya PDF banne mein. Please try again.");
-            });
+            }, 5000);
         });
     </script>
 </body>
