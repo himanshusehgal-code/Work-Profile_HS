@@ -193,13 +193,14 @@
             cursor: pointer;
         }
         .skill-item:hover { transform: scale(1.09); background: var(--accent); color: var(--bg); }
-        .portfolio-subsection { margin-bottom: 2.3rem; }
+        
+        .portfolio-subsection { margin-bottom: 3rem; }
         .portfolio-subsection h3 {
             font-size: 1.32rem;
             color: var(--accent);
             border-bottom: 2px solid var(--accent);
             padding-bottom: 0.4rem;
-            margin-bottom: 1.3rem;
+            margin-bottom: 1.5rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
@@ -210,9 +211,66 @@
             gap: 2.2rem;
             padding-bottom: 0.7rem;
         }
+        
+        /* New CSS for Website Cards (Shows full text & images) */
+        .website-card {
+            width: 380px; 
+            min-height: 420px;
+            border-radius: 19px;
+            box-shadow: 0 8px 24px var(--card-shadow);
+            background-color: var(--sidebar-bg);
+            color: var(--text-light);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1.2rem;
+            position: relative;
+            transition: box-shadow 0.24s, transform 0.22s;
+        }
+        .website-card:hover {
+            box-shadow: 0 16px 40px var(--card-shadow), 0 0 0 2px var(--accent);
+            transform: translateY(-5px) scale(1.02);
+        }
+        .website-image-container {
+            width: 100%;
+            height: 200px;
+            border-radius: 13px;
+            overflow: hidden;
+            margin-bottom: 1.2rem;
+            border: 2px solid var(--accent);
+            background-color: #000;
+        }
+        .website-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .website-card:hover .website-image-container img {
+            transform: scale(1.06);
+        }
+        .website-card h3 {
+            font-size: 1.3rem;
+            color: var(--accent);
+            margin-bottom: 0.8rem;
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .website-desc {
+            font-size: 1.05rem;
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            flex-grow: 1; /* Pushes the button to the bottom */
+        }
+
+        /* Existing Video Card CSS */
         .video-card {
             width: 315px;
-            min-height: 400px;
+            height: 400px;
             border-radius: 19px;
             box-shadow: 0 8px 24px var(--card-shadow);
             background-color: var(--sidebar-bg);
@@ -245,25 +303,6 @@
             background-color: #000;
             box-shadow: 0 4px 14px var(--card-shadow);
         }
-        .website-thumbnail {
-            background-color: var(--bg);
-            border: 2px solid var(--accent);
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 1rem;
-        }
-        .website-thumbnail h4 {
-            font-size: 1.8rem;
-            color: var(--text-light);
-            letter-spacing: 1px;
-        }
-        .website-thumbnail h4 span {
-            color: var(--accent);
-        }
         .video-card h3 {
             font-size: 1.07rem;
             color: var(--accent);
@@ -286,6 +325,7 @@
             -webkit-box-orient: vertical;
             color: var(--text-muted);
         }
+        
         .resume-download-buttons {
             display: flex;
             gap: 1.2rem;
@@ -354,6 +394,7 @@
         }
         #contact p a { color: var(--accent); }
         #contact p a:hover { color: var(--text-light); text-decoration: underline; }
+        
         @media (max-width: 950px) {
             .main { padding: 2rem 0.5rem 2rem 0.5rem; }
             .hero-name { font-size: 1.8rem; }
@@ -371,7 +412,7 @@
             .hero-card { width: 96vw; min-width: 240px; margin: 0.7rem 0.2rem; }
             #skills .skill-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
             .project-carousel { flex-direction: column; align-items: center; }
-            .video-card { width: 97vw; min-width: 220px; margin-right: 0; }
+            .video-card, .website-card { width: 97vw; min-width: 220px; margin-right: 0; }
             .hero-name { font-size: 1.6rem; }
         }
         @media (max-width: 480px) {
@@ -396,7 +437,7 @@
     </div>
     <div class="main">
         <div class="hero">
-            <h1 class="hero-name">Business Automation Developer & AI MIS Expert</h1>
+            <h1 class="hero-name">Himanshu Sehgal | Business Automation Developer & AI MIS Expert</h1>
             <div class="hero-cards-row">
                 <div class="hero-card">
                     <div class="hero-card-front"><h3>Google Sheets</h3></div>
@@ -404,8 +445,7 @@
                 </div>
                 <div class="hero-card">
                     <div class="hero-card-front"><h3>Apps Script</h3></div>
-                    <div class="hero-card-back"><h3>Automation Expert</h3>
-                    </div>
+                    <div class="hero-card-back"><h3>Automation Expert</h3></div>
                 </div>
                 <div class="hero-card">
                     <div class="hero-card-front"><h3>Looker Studio</h3></div>
@@ -516,26 +556,22 @@
                 <h3>Live Websites</h3>
                 <div class="project-carousel">
                     
-                    <div class="video-card">
-                        <div class="video-thumbnail-container">
-                            <div class="website-thumbnail">
-                                <h4><span>Dashup</span>data</h4>
-                            </div>
+                    <div class="website-card">
+                        <div class="website-image-container">
+                            <img src="https://via.placeholder.com/600x400/1e293b/00bcd4?text=Dashupdata+Preview" alt="Dashupdata Website Preview">
                         </div>
                         <h3>Dashupdata</h3>
-                        <p>A SaaS web application and data dashboard platform tailored for business automation.</p>
-                        <a href="https://dashupdata.live" target="_blank" class="download-btn" style="margin-top: 1rem; padding: 0.6rem 1rem; font-size: 0.95rem; min-width: 150px;">Visit Website</a>
+                        <p class="website-desc">A comprehensive SaaS platform and interactive data dashboard tailored for business automation. It streamlines complex workflows, visualizes key performance metrics in real-time, and empowers teams to make data-driven decisions effortlessly without manual interventions.</p>
+                        <a href="https://dashupdata.live" target="_blank" class="download-btn" style="padding: 0.7rem 1.5rem; font-size: 1rem;">Visit Dashupdata</a>
                     </div>
 
-                    <div class="video-card">
-                        <div class="video-thumbnail-container">
-                            <div class="website-thumbnail">
-                                <h4><span>D'</span>RIIVA</h4>
-                            </div>
+                    <div class="website-card">
+                        <div class="website-image-container">
+                            <img src="https://via.placeholder.com/600x400/1e293b/00bcd4?text=D'RIIVA+Preview" alt="D'RIIVA Website Preview">
                         </div>
                         <h3>D'RIIVA</h3>
-                        <p>A dedicated fashion brand and e-commerce platform designed exclusively for women's clothing.</p>
-                        <a href="https://www.driiva.in/" target="_blank" class="download-btn" style="margin-top: 1rem; padding: 0.6rem 1rem; font-size: 0.95rem; min-width: 150px;">Visit Website</a>
+                        <p class="website-desc">An exclusive fashion brand and premium e-commerce platform dedicated specifically to women's clothing. It features a seamless online shopping experience, elegant UI design, secure checkout, and showcases the latest trends in women's apparel.</p>
+                        <a href="https://www.driiva.in/" target="_blank" class="download-btn" style="padding: 0.7rem 1.5rem; font-size: 1rem;">Visit D'RIIVA</a>
                     </div>
                     
                 </div>
@@ -583,7 +619,7 @@
         <section id="resume">
             <h2>Resume</h2>
             <div class="resume-download-buttons">
-                <a href="https://drive.google.com/file/d/1l4q6kEzC_jB0qh0OO73caPZxD8X_FYGe/view?usp=sharing" class="download-btn" target="_blank">Download Resume</a>
+                <a href="https://drive.google.com/file/d/193gyrRHYt46UxRa-VDKIg70doUAoBYPn/view?usp=sharing" class="download-btn" target="_blank">Download Resume</a>
             </div>
             
             <div class="resume-section">
