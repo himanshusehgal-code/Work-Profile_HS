@@ -212,7 +212,7 @@
             padding-bottom: 0.7rem;
         }
         
-        /* New CSS for Website Cards (Shows full text & images) */
+        /* Website Cards CSS */
         .website-card {
             width: 380px; 
             min-height: 420px;
@@ -231,23 +231,21 @@
             box-shadow: 0 16px 40px var(--card-shadow), 0 0 0 2px var(--accent);
             transform: translateY(-5px) scale(1.02);
         }
+        /* Adjusted container for live iframes */
         .website-image-container {
             width: 100%;
-            height: 200px;
+            height: 250px;
             border-radius: 13px;
             overflow: hidden;
             margin-bottom: 1.2rem;
             border: 2px solid var(--accent);
-            background-color: #000;
+            background-color: #fff; /* White background better for websites */
         }
-        .website-image-container img {
+        /* Iframe styling */
+        .website-image-container iframe {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            transition: transform 0.4s ease;
-        }
-        .website-card:hover .website-image-container img {
-            transform: scale(1.06);
+            border: none;
         }
         .website-card h3 {
             font-size: 1.3rem;
@@ -264,7 +262,7 @@
             color: var(--text-light);
             margin-bottom: 1.5rem;
             line-height: 1.6;
-            flex-grow: 1; /* Pushes the button to the bottom */
+            flex-grow: 1; 
         }
 
         /* Existing Video Card CSS */
@@ -558,7 +556,7 @@
                     
                     <div class="website-card">
                         <div class="website-image-container">
-                            <img src="https://via.placeholder.com/600x400/1e293b/00bcd4?text=Dashupdata+Preview" alt="Dashupdata Website Preview">
+                            <iframe src="https://dashupdata.live" title="Dashupdata Website"></iframe>
                         </div>
                         <h3>Dashupdata</h3>
                         <p class="website-desc">A comprehensive SaaS platform and interactive data dashboard tailored for business automation. It streamlines complex workflows, visualizes key performance metrics in real-time, and empowers teams to make data-driven decisions effortlessly without manual interventions.</p>
@@ -567,7 +565,7 @@
 
                     <div class="website-card">
                         <div class="website-image-container">
-                            <img src="https://via.placeholder.com/600x400/1e293b/00bcd4?text=D'RIIVA+Preview" alt="D'RIIVA Website Preview">
+                            <iframe src="https://www.driiva.in/" title="D'RIIVA Website"></iframe>
                         </div>
                         <h3>D'RIIVA</h3>
                         <p class="website-desc">An exclusive fashion brand and premium e-commerce platform dedicated specifically to women's clothing. It features a seamless online shopping experience, elegant UI design, secure checkout, and showcases the latest trends in women's apparel.</p>
