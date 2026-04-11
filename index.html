@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Himanshu Sehgal | Automation & MIS Expert</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f172a;
+            --sidebar-bg: #1e293b;
+            --accent: #00bcd4;
+            --text-light: #e2e8f0;
+            --text-muted: #94a3b8;
+            --card-shadow: rgba(0,0,0,0.3);
+            --project-detail-bg: #2a384b;
+            --button-hover: #0097a7;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: var(--bg);
+            color: var(--text-light);
+            display: flex;
+            min-height: 100vh;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        .sidebar {
+            background: var(--sidebar-bg);
+            width: 280px;
+            padding: 2.5rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            box-shadow: 2px 0 10px var(--card-shadow);
+            flex-shrink: 0;
+            z-index: 100;
+        }
+        .profile-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 4px solid var(--accent);
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 0 15px rgba(0, 188, 212, 0.5);
+            transition: transform 0.3s ease;
+        }
+        .profile-img:hover { transform: scale(1.1); }
+        .sidebar h2 {
+            font-size: 1.6rem;
+            margin-bottom: 2rem;
+            color: var(--accent);
+            text-align: center;
+            letter-spacing: 0.05em;
+            font-weight: 700;
+        }
+        .sidebar nav {
+            width: 100%;
+            margin-top: 1rem;
+        }
+        .sidebar nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin: 0.75rem 0;
+            padding: 0.85rem 1.2rem;
+            border-radius: 8px;
+            width: 100%;
+            text-align: center;
+            display: block;
+            transition: all 0.3s ease;
+            font-weight: 400;
+            font-size: 1.1rem;
+        }
+        .sidebar nav a:hover,
+        .sidebar nav a.active {
+            background: var(--accent);
+            color: var(--bg);
+            transform: translateX(5px);
+            box-shadow: 0 4px 10px rgba(0, 188, 212, 0.4);
+        }
+        .main {
+            flex-grow: 1;
+            padding: 3rem 0 3rem 0;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        section {
+            margin: 0 auto 3.2rem auto;
+            padding-bottom: 1.8rem;
+            border-bottom: 1px dashed var(--text-muted);
+            max-width: 850px;
+        }
+        section:last-of-type {
+            border-bottom: none;
+        }
+        section h2 {
+            font-size: 2.3rem;
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 0.6rem;
+            margin-bottom: 2.2rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 4.5rem;
+            margin-top: 2.5rem;
+        }
+        .hero-name {
+            font-size: 2.7rem;
+            color: var(--accent);
+            font-weight: bold;
+            margin-bottom: 2.3rem;
+            text-align: center;
+            animation: pulse 2s infinite;
+            letter-spacing: 1.5px;
+        }
+        .hero-cards-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.4rem;
+        }
+        .hero-card {
+            background-color: var(--sidebar-bg);
+            width: 185px;
+            height: 220px;
+            margin: 1rem 0.6rem;
+            border-radius: 17px;
+            box-shadow: 0 8px 25px var(--card-shadow);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--text-light);
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s ease;
+        }
+        .hero-card:hover { transform: rotateY(180deg); }
+        .hero-card-front, .hero-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: inherit;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .hero-card-back {
+            background-color: var(--accent);
+            color: var(--bg);
+            transform: rotateY(180deg);
+        }
+        .hero-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.5rem;
+        }
+        #about p {
+            font-size: 1.15rem;
+            color: var(--text-light);
+            margin-bottom: 1.1rem;
+        }
+        #skills .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 1.2rem;
+            margin-top: 0.5rem;
+        }
+        .skill-item {
+            background: var(--sidebar-bg);
+            padding: 1.1rem;
+            border-radius: 11px;
+            box-shadow: 0 4px 10px var(--card-shadow);
+            text-align: center;
+            font-size: 1.08rem;
+            font-weight: 500;
+            transition: transform 0.3s ease, background 0.22s;
+            cursor: pointer;
+        }
+        .skill-item:hover { transform: scale(1.09); background: var(--accent); color: var(--bg); }
+        .portfolio-subsection { margin-bottom: 2.3rem; }
+        .portfolio-subsection h3 {
+            font-size: 1.32rem;
+            color: var(--accent);
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 0.4rem;
+            margin-bottom: 1.3rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .project-carousel {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2.2rem;
+            padding-bottom: 0.7rem;
+        }
+        .video-card {
+            width: 315px;
+            height: 400px;
+            border-radius: 19px;
+            box-shadow: 0 8px 24px var(--card-shadow);
+            background-color: var(--sidebar-bg);
+            color: var(--text-light);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.1rem 1.1rem 1.1rem;
+            position: relative;
+            cursor: pointer; 
+            overflow: hidden;
+            transition: box-shadow 0.24s, transform 0.22s;
+            margin-bottom: 0.7rem;
+        }
+        .video-card:hover {
+            box-shadow: 0 16px 40px var(--card-shadow), 0 0 0 2px var(--accent);
+            transform: translateY(-5px) scale(1.03);
+        }
+        .video-thumbnail-container {
+            position: relative;
+            width: 100%;
+            height: 210px; 
+            border-radius: 13px;
+            overflow: hidden;
+            margin-bottom: 1.2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+            box-shadow: 0 4px 14px var(--card-shadow);
+        }
+        .video-card h3 {
+            font-size: 1.07rem;
+            color: var(--accent);
+            margin-bottom: 0.6rem;
+            text-align: center;
+            margin-top: 0.5rem;
+            line-height: 1.3;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+        }
+        .video-card p {
+            font-size: 1.01rem;
+            text-align: center;
+            flex-grow: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            color: var(--text-muted);
+        }
+        .resume-download-buttons {
+            display: flex;
+            gap: 1.2rem;
+            margin: 2.1rem 0 2.2rem 0;
+            justify-content: center;
+            flex-wrap: wrap; /* Allows buttons to wrap on small screens */
+        }
+        .download-btn {
+            background: var(--accent);
+            color: var(--bg);
+            border: none;
+            padding: 0.92rem 2rem;
+            font-size: 1.11rem;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 2px 10px var(--card-shadow);
+            transition: background 0.22s, color 0.22s, transform 0.17s;
+            text-decoration: none;
+            display: inline-block;
+            letter-spacing: 0.02em;
+        }
+        .download-btn:hover, .download-btn:focus {
+            background: var(--button-hover);
+            color: var(--text-light);
+            transform: translateY(-2px) scale(1.04);
+        }
+        .download-btn:disabled {
+            background: var(--text-muted);
+            cursor: not-allowed;
+            transform: none;
+        }
+        .resume-section {
+            background-color: var(--sidebar-bg);
+            padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px var(--card-shadow);
+            margin-bottom: 2.3rem;
+        }
+        .resume-section h3 {
+            color: var(--accent);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 0.4rem;
+        }
+        .resume-item { margin-bottom: 1.5rem; }
+        .resume-item h4 {
+            font-size: 1.09rem;
+            color: var(--text-light);
+            margin-bottom: 0.2rem;
+        }
+        .resume-item p.subtitle {
+            font-size: 0.96rem;
+            color: var(--text-muted);
+            margin-bottom: 0.44rem;
+        }
+        .resume-item ul {
+            list-style: disc;
+            padding-left: 1.2rem;
+        }
+        .resume-item ul li { margin-bottom: 0.3rem; }
+        #contact p {
+            font-size: 1.13rem;
+            color: var(--text-light);
+            margin-bottom: 0.88rem;
+        }
+        #contact p a { color: var(--accent); }
+        #contact p a:hover { color: var(--text-light); text-decoration: underline; }
+        @media (max-width: 950px) {
+            .main { padding: 2rem 0.5rem 2rem 0.5rem; }
+        }
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; flex-direction: row; justify-content: space-around; padding: 1.5rem 1rem; position: static; box-shadow: 0 2px 10px var(--card-shadow); }
+            .profile-img { width: 80px; height: 80px; margin-bottom: 0; margin-right: 1rem; }
+            .sidebar h2 { display: none; }
+            .sidebar nav { display: flex; flex-wrap: wrap; justify-content: center; margin-top: 0; }
+            .sidebar nav a { margin: 0.3rem; padding: 0.6rem 0.8rem; font-size: 0.93rem; }
+            .main { padding: 2rem 0.1rem 2rem 0.1rem; }
+            .hero { flex-direction: column; }
+            .hero-cards-row { flex-direction: column; align-items: center; }
+            .hero-card { width: 96vw; min-width: 240px; margin: 0.7rem 0.2rem; }
+            #skills .skill-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+            .project-carousel { flex-direction: column; align-items: center; }
+            .video-card { width: 97vw; min-width: 220px; margin-right: 0; }
+        }
+        @media (max-width: 480px) {
+            .sidebar { flex-direction: column; align-items: center; padding-bottom: 0.5rem; }
+            .profile-img { margin-bottom: 1rem; margin-right: 0; }
+            .sidebar nav { flex-direction: column; }
+            .sidebar nav a { width: 80%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <img class="profile-img" src="https://i.postimg.cc/RJfcGcSS/IMG-20230123-WA0002.jpg" alt="Himanshu Sehgal Profile" />
+        <h2>Himanshu Sehgal</h2>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#resume">Resume</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </div>
+    <div class="main">
+        <div class="hero">
+            <h1 class="hero-name">Himanshu Sehgal Profile</h1>
+            <div class="hero-cards-row">
+                <div class="hero-card">
+                    <div class="hero-card-front"><h3>Google Sheets</h3></div>
+                    <div class="hero-card-back"><h3>Advanced Skills</h3></div>
+                </div>
+                <div class="hero-card">
+                    <div class="hero-card-front"><h3>Apps Script</h3></div>
+                    <div class="hero-card-back"><h3>Automation Expert</h3>
+                    </div>
+                </div>
+                <div class="hero-card">
+                    <div class="hero-card-front"><h3>Looker Studio</h3></div>
+                    <div class="hero-card-back"><h3>Data Visualization</h3></div>
+                </div>
+                <div class="hero-card">
+                    <div class="hero-card-front"><h3>Power BI</h3></div>
+                    <div class="hero-card-back"><h3>Interactive Dashboards</h3></div>
+                </div>
+                <div class="hero-card">
+                    <div class="hero-card-front"><h3>SQL</h3></div>
+                    <div class="hero-card-back"><h3>Database Basics</h3></div>
+                </div>
+                <div class="hero-card">
+                    <div class="hero-card-front"><h3>Appsheet</h3></div>
+                    <div class="hero-card-back"><h3>No-Code Apps</h3></div>
+                </div>
+                <div class="hero-card">
+                    <div class="hero-card-front"><h3>Web Apps</h3></div>
+                    <div class="hero-card-back"><h3>Business Applications</h3></div>
+                </div>
+                <div class="hero-card">
+                    <div class="hero-card-front"><h3>Chatbots</h3></div>
+                    <div class="hero-card-back"><h3>Conversational AI</h3></div>
+                </div>
+                <div class="hero-card">
+                    <div class="hero-card-front"><h3>Web Portals</h3></div>
+                    <div class="hero-card-back"><h3>Client Dashboards</h3></div>
+                </div>
+                <div class="hero-card">
+                    <div class="hero-card-front"><h3>Android Apps</h3></div>
+                    <div class="hero-card-back"><h3>Mobile Development</h3></div>
+                </div>
+                <div class="hero-card">
+                    <div class="hero-card-front"><h3>GitHub</h3></div>
+                    <div class="hero-card-back"><h3>Version Control</h3></div>
+                </div>
+                <div class="hero-card">
+                    <div class="hero-card-front"><h3>AI Integrations</h3></div>
+                    <div class="hero-card-back"><h3>Smart Automation</h3></div>
+                </div>
+                <div class="hero-card">
+                    <div class="hero-card-front"><h3>Python</h3></div>
+                    <div class="hero-card-back"><h3>Data Engineering</h3></div>
+                </div>
+                <div class="hero-card">
+                    <div class="hero-card-front"><h3>App Scripts Dashboard</h3></div>
+                    <div class="hero-card-back"><h3>Custom Admin UI</h3></div>
+                </div>
+                <div class="hero-card">
+                    <div class="hero-card-front"><h3>KPI Dashboards</h3></div>
+                    <div class="hero-card-back"><h3>Visual Analytics</h3></div>
+                </div>
+                <div class="hero-card">
+                    <div class="hero-card-front"><h3>Mobile App Portals</h3></div>
+                    <div class="hero-card-back"><h3>On-the-go Access</h3></div>
+                </div>
+            </div>
+        </div>
+        <section id="about">
+            <h2>About</h2>
+              <p>
+        I specialize in workflow automation using Google Sheets, Apps Script, and dashboard tools.
+        I've worked with MSMEs and startups to simplify reporting and save hundreds of manual hours.
+    </p>
+
+    <p>
+        Alongside technical delivery, I operate at the **intersection of staff execution and managerial decision-making**.
+        I design workflows by keeping **ground-level staff realities in mind**, ensuring systems are practical to follow,
+        while **technically resolving managerial and leadership issues** related to visibility, control, reporting, and accountability.
+    </p>
+
+    <p>
+        I regularly interact with **staff, supervisors, and managers**, helping translate operational challenges into structured,
+        ethical, and transparent processes. My work supports meetings, follow-ups, MIS reviews, and leadership decisions,
+        enabling managers to focus on outcomes rather than operational friction.
+    </p>
+
+    <p>
+        My core strength lies in **problem solving, coordination, and ownership** — ensuring that systems not only work technically,
+        but also work for people.
+    </p>
+        </section>
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="skill-grid">
+                <div class="skill-item">Advanced Google Sheets & Excel</div>
+                <div class="skill-item">Apps Script Automation</div>
+                <div class="skill-item">Form Builders (HTML / Prefilled / Validated)</div>
+                <div class="skill-item">Looker Studio Reports</div>
+                <div class="skill-item">Power BI (Dashboards)</div>
+                <div class="skill-item">Basic SQL</div>
+                <div class="skill-item">Appsheet</div>
+                <div class="skill-item">Web Apps</div>
+                <div class="skill-item">Chatbots</div>
+                <div class="skill-item">Web Portals</div>
+                <div class="skill-item">Android Apps</div>
+                <div class="skill-item">GitHub</div>
+                <div class="skill-item">AI Integrations</div>
+                <div class="skill-item">WhatsApp & Email Automation</div>
+                <div class="skill-item">Workflow Management Systems (FMS, PMS, NBD)</div>
+            </div>
+        </section>
+        <section id="portfolio">
+            <h2>Portfolio</h2>
+            <div class="portfolio-subsection">
+                <h3>Video Projects</h3>
+                <div class="project-carousel">
+
+                    <div class="video-card">
+                        <div class="video-thumbnail-container">
+                            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/4RL0rKn8XR8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                        <h3>How to create a free web application for business</h3>
+                        <p>Learn to create a free web application for your business needs without coding.</p>
+                    </div>
+
+                    <div class="video-card">
+                        <div class="video-thumbnail-container">
+                            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/bKq2sNR6kDU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                        <h3>How to create a free chatbot for business in 5 minutes</h3>
+                        <p>Build a free business chatbot quickly and efficiently in just 5 minutes.</p>
+                    </div>
+
+                    <div class="video-card">
+                        <div class="video-thumbnail-container">
+                            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/M8FV0WrC8MU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                        <h3>How to create a free web portal for business</h3>
+                        <p>Discover how to set up a free web portal to manage your business operations.</p>
+                    </div>
+
+                    <div class="video-card">
+                        <div class="video-thumbnail-container">
+                            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/D2B1HFZKRlo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                        <h3>How to create a free e-commerce website with Google</h3>
+                        <p>Learn to build a free e-commerce website using Google tools.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <section id="resume">
+            <h2>Resume</h2>
+            <div class="resume-download-buttons">
+                <a href="https://drive.google.com/file/d/193gyrRHYt46UxRa-VDKIg70doUAoBYPn/view?usp=sharing" class="download-btn" download target="_blank">Static PDF</a>
+                <button id="generatePdfBtn" class="download-btn">Generate Live PDF</button>
+            </div>
+            <div class="resume-section">
+                <h3>Summary</h3>
+                <p>Highly motivated Automation and MIS Expert with X years of experience in optimizing business processes through the strategic implementation of Google Workspace tools, particularly Google Sheets and Apps Script. Proven ability to develop custom solutions that enhance data management, reporting, and communication efficiency for MSMEs and startups.</p>
+            </div>
+            <div class="resume-section">
+                <h3>Work Experience</h3>
+                <div class="resume-item">
+                    <h4>Mis Officer</h4>
+                    <p class="subtitle">Hosexpert | 21/01/2025 – Present</p>
+                    <ul>
+                        <li>Leading automation and MIS system deployment for field operations and process management.</li>
+                        <li>Developed integrated dashboards, WhatsApp automation, and client onboarding flows.</li>
+                        <li>Worked with stakeholders to build scalable solutions for service and reporting needs.</li>
+                    </ul>
+                </div>
+                <div class="resume-item">
+                    <h4>Automation & MIS Consultant</h4>
+                    <p class="subtitle">Freelance / Contract | 11/3/2024 – 20/01/2025</p>
+                    <ul>
+                        <li>Worked as a freelancer for several esteemed companies, including Gargee Designer's (Delhi), Sajjan Apparels Pvt. Ltd. (Noida), OSV (Gurgaon), Shagun Cares (Delhi), and Auto Dye Cast India (Delhi), where I built customized systems to streamline their operations.</li>
+                        <li>Designed and deployed custom Project Management Systems (PMS) for manufacturing clients, automating task assignment, progress tracking, and report generation.</li>
+                        <li>Developed a Doer Scoring Management System for a service-based startup, integrating live photo and location capture for attendance and performance evaluation.</li>
+                        <li>Automated sales reporting (NBD & CRR) for an apparel company, enhancing data accuracy and reducing report generation time.</li>
+                        <li>Implemented robust WhatsApp and Email automation solutions for various clients, streamlining customer communication and internal alerts.</li>
+                        <li>Created dynamic dashboards using Looker Studio to provide real-time insights for key business metrics.</li>
+                    </ul>
+                </div>
+                <div class="resume-item">
+                    <h4>MIS Officer</h4>
+                    <p class="subtitle">Corporate Incentive solutions private limited | 16/01/2023 – 10/03/2024</p>
+                    <ul>
+                        <li>Made Google Sheets panels and repaired existing ones.</li>
+                        <li>Uploaded reports on company panels and created leaderboards for clients.</li>
+                        <li>Managed various check-in reports for applications.</li>
+                        <li>Sent bulk emails and WhatsApp messages through panels.</li>
+                    </ul>
+                </div>
+                <div class="resume-item">
+                    <h4>MIS Officer</h4>
+                    <p class="subtitle">Fujiyama power system Pvt Ltd.(UTL) | 16/08/2021 – 15/01/2023</p>
+                    <ul>
+                        <li>Created problem-solving process-based flow charts and monitoring sheets.</li>
+                        <li>Monitored, controlled, and validated employee processes.</li>
+                        <li>Provided daily tasks in daily checklists in Google Data Studio, with reports and intimate tasks on WhatsApp.</li>
+                        <li>Provided scores to management based on KRA and KPI of employees.</li>
+                    </ul>
+                </div>
+                <div class="resume-item">
+                    <h4>Freelancer Process Specialist</h4>
+                    <p class="subtitle">Authridge research service private limited | March 2019 – April 2020</p>
+                    <ul>
+                        <li>Worked as a freelancer process specialist for Authridge, a background verification service provider.</li>
+                    </ul>
+                </div>
+                <div class="resume-item">
+                    <h4>Market Research and Processing Associate</h4>
+                    <p class="subtitle">Ocrex enterprises private limited | Oct 2015 – August 2018</p>
+                    <ul>
+                        <li>Worked at Ocrex, which developed "autorec" for automating bank reconciliation from paper bank statements.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="resume-section">
+                <h3>Education</h3>
+                <div class="resume-item">
+                    <h4>MBA</h4>
+                    <p class="subtitle">Punjab Technical University | 2013</p>
+                    <ul>
+                        <li>Grades: 70%</li>
+                    </ul>
+                </div>
+                <div class="resume-item">
+                    <h4>B.com</h4>
+                    <p class="subtitle">DAV COLLEGE SECTOR 10 CHANDIGARH | 2011</p>
+                    <ul>
+                        <li>Grades: 963/1800</li>
+                    </ul>
+                </div>
+                <div class="resume-item">
+                    <h4>12th Grade</h4>
+                    <p class="subtitle">DAV SCHOOL CHANDIGARH | 2008</p>
+                    <ul>
+                        <li>Grades: 60%</li>
+                    </ul>
+                </div>
+                <div class="resume-item">
+                    <h4>10th Grade</h4>
+                    <p class="subtitle">Mount Carmel School Chandigarh | 2005</p>
+                    <ul>
+                        <li>Grades: 67%</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="resume-section">
+                <h3>Key Skills</h3>
+                <p>Google Sheets (Expert), Google Apps Script (Expert), Excel (Advanced), Looker Studio (Data Visualization), Power BI (Basic to Intermediate), Workflow Automation, Process Optimization, Data Analysis, SQL (Basic), Web Apps, Chatbots, Web Portals, Appsheet, HTML, CSS, JavaScript (Basic for Automation), API Integration, CRM Management, Project Management, Communication, Problem Solving, MIS Reporting, Vlookup, Xlookup, Index Match, Pivot Table, Import Range, Google Forms, HTML Forms, Scripting, Email Automation, WhatsApp Automation, Prefilled Google Form Links with Hyperlink, FMS, SAP FICO Knowledge, Accounting Knowledge, Decent Communication Skills, Independently Working Capability, Reports Automation Expert, Problem Solving in Daily Work, PMS, IMS Checklist, Delegation, NBD, CRR System Creation, Appsheet, Google Website, Basic E-commerce Website, Google Colab Python.</p>
+            </div>
+        </section>
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>I'm always open to new opportunities and collaborations. Feel free to reach out!</p>
+            <p>Email: <a href="mailto:himanshusehgal320@gmail.com">himanshusehgal320@gmail.com</a></p>
+            <p>Phone: +918569890156</p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/himanshu-s-585a0a201" target="_blank">linkedin.com/in/himanshu-s-585a0a201</a></p>
+            <p>YouTube: <a href="https://www.youtube.com/@sehgal_sheet_tricks3306" target="_blank">youtube.com/@sehgal_sheet_tricks3306</a></p>
+        </section>
+    </div>
+
+    <script>
+        document.getElementById('generatePdfBtn').addEventListener('click', async () => {
+            const btn = document.getElementById('generatePdfBtn');
+            const originalText = btn.innerText;
+            
+            // Assuming your FastAPI route is something like /generate-pdf
+            // You may need to change this if your endpoint is named differently (e.g., /pdf)
+            const endpoint = 'generate-pdf'; 
+            
+            const currentUrl = window.location.href;
+            
+            // Check if user is testing locally. Playwright on Render can't access "localhost" or "file://"
+            if (currentUrl.startsWith('file://') || currentUrl.includes('localhost')) {
+                alert('Oops! Your Playwright API on Render cannot access local files. Please host this portfolio live (like on GitHub Pages) for the PDF generation to work.');
+                return;
+            }
+
+            // Visual feedback
+            btn.innerText = 'Generating PDF...';
+            btn.disabled = true;
+
+            const apiUrl = `https://support-dashupdata.onrender.com/${endpoint}?url=${encodeURIComponent(currentUrl)}`;
+
+            try {
+                // We're opening the API URL in a new window which should prompt the download 
+                // since the FastAPI response returns media_type="application/pdf"
+                window.open(apiUrl, '_blank');
+            } catch (error) {
+                console.error("PDF generation failed", error);
+                alert('Something went wrong trying to contact your Render API.');
+            } finally {
+                // Reset button state
+                btn.innerText = originalText;
+                btn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
