@@ -214,70 +214,6 @@
             align-items: stretch; /* Ensures cards match height if side-by-side */
         }
         
-        /* UPDATED: Website Cards CSS */
-        .website-card {
-            width: 380px; 
-            height: auto; /* Lets the card expand dynamically */
-            min-height: 480px; /* Gives it a good base height */
-            border-radius: 19px;
-            box-shadow: 0 8px 24px var(--card-shadow);
-            background-color: var(--sidebar-bg);
-            color: var(--text-light);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 1.2rem;
-            position: relative;
-            transition: box-shadow 0.24s, transform 0.22s;
-        }
-        .website-card:hover {
-            box-shadow: 0 16px 40px var(--card-shadow), 0 0 0 2px var(--accent);
-            transform: translateY(-5px) scale(1.02);
-        }
-        .website-image-container {
-            width: 100%;
-            height: 220px;
-            border-radius: 13px;
-            overflow: hidden;
-            margin-bottom: 1.2rem;
-            border: 2px solid var(--accent);
-            background-color: #0f172a; 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        /* Style for the auto-generated screenshot */
-        .website-image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top; /* Ensures the top of the website shows */
-            transition: transform 0.4s ease;
-        }
-        .website-card:hover .website-image-container img {
-            transform: scale(1.05); /* Slight zoom on hover */
-        }
-        .website-card h3 {
-            font-size: 1.4rem;
-            color: var(--accent);
-            margin-bottom: 0.8rem;
-            text-align: center;
-            text-transform: uppercase;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-        .website-desc {
-            font-size: 1.05rem;
-            text-align: center;
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-            flex-grow: 1; /* Pushes the button to the bottom perfectly */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
         /* Existing Video Card CSS */
         .video-card {
             width: 315px;
@@ -439,7 +375,7 @@
             .hero-card { width: 96vw; min-width: 240px; margin: 0.7rem 0.2rem; }
             #skills .skill-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
             .project-carousel { flex-direction: column; align-items: center; }
-            .video-card, .website-card { width: 97vw; min-width: 220px; margin-right: 0; height: auto; }
+            .video-card { width: 97vw; min-width: 220px; margin-right: 0; height: auto; }
             .hero-name { font-size: 1.6rem; }
         }
         @media (max-width: 480px) {
@@ -579,31 +515,6 @@
         <section id="portfolio">
             <h2>Portfolio</h2>
             
-            <div class="portfolio-subsection">
-                <h3>Live Websites</h3>
-                <div class="project-carousel">
-                    
-                    <div class="website-card">
-                        <div class="website-image-container">
-                            <img src="https://image.thum.io/get/width/800/crop/800/https://dashupdata.live" alt="Dashupdata Live Preview" loading="lazy">
-                        </div>
-                        <h3>Dashupdata</h3>
-                        <p class="website-desc">A comprehensive SaaS platform and interactive data dashboard tailored for business automation. It streamlines complex workflows, visualizes key performance metrics in real-time, and empowers teams to make data-driven decisions effortlessly without manual interventions.</p>
-                        <a href="https://dashupdata.live" target="_blank" class="download-btn" style="padding: 0.7rem 1.5rem; font-size: 1rem;">Visit Dashupdata</a>
-                    </div>
-
-                    <div class="website-card">
-                        <div class="website-image-container">
-                            <img src="https://image.thum.io/get/width/800/crop/800/https://www.driiva.in/" alt="D'RIIVA Live Preview" loading="lazy">
-                        </div>
-                        <h3>D'RIIVA</h3>
-                        <p class="website-desc">An exclusive fashion brand and premium e-commerce platform dedicated specifically to women's clothing. It features a seamless online shopping experience, elegant UI design, secure checkout, and showcases the latest trends in women's apparel.</p>
-                        <a href="https://www.driiva.in/" target="_blank" class="download-btn" style="padding: 0.7rem 1.5rem; font-size: 1rem;">Visit D'RIIVA</a>
-                    </div>
-                    
-                </div>
-            </div>
-
             <div class="portfolio-subsection">
                 <h3>Video Projects</h3>
                 <div class="project-carousel">
