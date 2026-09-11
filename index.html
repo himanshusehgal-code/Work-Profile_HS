@@ -1,908 +1,1253 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Himanshu Sehgal | AI Automation & Business Systems Developer</title>
 
-    <title>Himanshu Sehgal | Business Automation Developer & AI Automation Specialist</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<style>
 
-    <style>
+    :root {
+        --bg: #0f172a;
+        --sidebar-bg: #1e293b;
+        --accent: #00bcd4;
+        --text-light: #e2e8f0;
+        --text-muted: #94a3b8;
+        --card-shadow: rgba(0,0,0,0.3);
+        --project-detail-bg: #2a384b;
+        --button-hover: #0097a7;
+        --success: #22c55e;
+    }
 
-        :root {
-            --bg: #0f172a;
-            --sidebar-bg: #1e293b;
-            --accent: #00bcd4;
-            --text-light: #e2e8f0;
-            --text-muted: #94a3b8;
-            --card-shadow: rgba(0,0,0,0.3);
-            --button-hover: #0097a7;
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: 'Roboto', sans-serif;
+        background: var(--bg);
+        color: var(--text-light);
+        display: flex;
+        min-height: 100vh;
+        line-height: 1.6;
+        overflow-x: hidden;
+    }
+
+    /* =========================
+       SIDEBAR
+    ========================== */
+
+    .sidebar {
+        background: var(--sidebar-bg);
+        width: 280px;
+        padding: 2.5rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        box-shadow: 2px 0 10px var(--card-shadow);
+        flex-shrink: 0;
+        z-index: 100;
+    }
+
+    .profile-img {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        border: 4px solid var(--accent);
+        object-fit: cover;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 0 15px rgba(0, 188, 212, 0.5);
+        transition: transform 0.3s ease;
+    }
+
+    .profile-img:hover {
+        transform: scale(1.05);
+    }
+
+    .sidebar h2 {
+        font-size: 1.6rem;
+        margin-bottom: 2rem;
+        color: var(--accent);
+        text-align: center;
+        letter-spacing: 0.05em;
+        font-weight: 700;
+    }
+
+    .sidebar nav {
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+    .sidebar nav a {
+        color: var(--text-light);
+        text-decoration: none;
+        margin: 0.75rem 0;
+        padding: 0.85rem 1.2rem;
+        border-radius: 8px;
+        width: 100%;
+        text-align: center;
+        display: block;
+        transition: all 0.3s ease;
+        font-weight: 400;
+        font-size: 1.05rem;
+    }
+
+    .sidebar nav a:hover,
+    .sidebar nav a.active {
+        background: var(--accent);
+        color: var(--bg);
+        transform: translateX(5px);
+        box-shadow: 0 4px 10px rgba(0, 188, 212, 0.4);
+    }
+
+    /* =========================
+       MAIN
+    ========================== */
+
+    .main {
+        flex-grow: 1;
+        padding: 3rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    section {
+        margin: 0 auto 3.2rem auto;
+        padding-bottom: 1.8rem;
+        border-bottom: 1px dashed var(--text-muted);
+        max-width: 950px;
+    }
+
+    section:last-of-type {
+        border-bottom: none;
+    }
+
+    section h2 {
+        font-size: 2.3rem;
+        border-bottom: 3px solid var(--accent);
+        padding-bottom: 0.6rem;
+        margin-bottom: 2.2rem;
+        color: var(--accent);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+    }
+
+    /* =========================
+       HERO
+    ========================== */
+
+    .hero {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 4.5rem;
+        margin-top: 1.5rem;
+    }
+
+    .hero-name {
+        font-size: 2.5rem;
+        color: var(--accent);
+        font-weight: 900;
+        margin-bottom: 0.7rem;
+        text-align: center;
+        letter-spacing: 1px;
+        max-width: 950px;
+    }
+
+    .hero-subtitle {
+        color: var(--text-light);
+        text-align: center;
+        font-size: 1.25rem;
+        max-width: 850px;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-tagline {
+        color: var(--text-muted);
+        text-align: center;
+        font-size: 1.05rem;
+        max-width: 800px;
+        margin-bottom: 2.5rem;
+    }
+
+    .hero-cards-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.2rem;
+    }
+
+    .hero-card {
+        background-color: var(--sidebar-bg);
+        width: 180px;
+        height: 195px;
+        border-radius: 17px;
+        box-shadow: 0 8px 25px var(--card-shadow);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: var(--text-light);
+        position: relative;
+        transform-style: preserve-3d;
+        transition: transform 0.6s ease;
+    }
+
+    .hero-card:hover {
+        transform: rotateY(180deg);
+    }
+
+    .hero-card-front,
+    .hero-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: inherit;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+    }
+
+    .hero-card-back {
+        background-color: var(--accent);
+        color: var(--bg);
+        transform: rotateY(180deg);
+    }
+
+    .hero-card h3 {
+        font-size: 1.08rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .hero-card p {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+    }
+
+    .hero-card-back p {
+        color: var(--bg);
+    }
+
+    /* =========================
+       ABOUT
+    ========================== */
+
+    #about p {
+        font-size: 1.12rem;
+        color: var(--text-light);
+        margin-bottom: 1.2rem;
+    }
+
+    .highlight-box {
+        background: var(--sidebar-bg);
+        border-left: 4px solid var(--accent);
+        padding: 1.4rem;
+        border-radius: 10px;
+        margin-top: 1.5rem;
+        box-shadow: 0 4px 12px var(--card-shadow);
+    }
+
+    .highlight-box strong {
+        color: var(--accent);
+    }
+
+    /* =========================
+       SKILLS
+    ========================== */
+
+    #skills .skill-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+        gap: 1.1rem;
+    }
+
+    .skill-item {
+        background: var(--sidebar-bg);
+        padding: 1.15rem;
+        border-radius: 11px;
+        box-shadow: 0 4px 10px var(--card-shadow);
+        text-align: center;
+        font-size: 1rem;
+        font-weight: 500;
+        transition: transform 0.3s ease, background 0.22s;
+        cursor: default;
+    }
+
+    .skill-item:hover {
+        transform: translateY(-5px);
+        background: var(--accent);
+        color: var(--bg);
+    }
+
+    .skill-item.ai {
+        border: 1px solid var(--accent);
+    }
+
+    /* =========================
+       AUTOMATION STACK
+    ========================== */
+
+    .stack-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.3rem;
+    }
+
+    .stack-card {
+        background: var(--sidebar-bg);
+        padding: 1.5rem;
+        border-radius: 13px;
+        box-shadow: 0 5px 15px var(--card-shadow);
+        border-top: 3px solid var(--accent);
+    }
+
+    .stack-card h3 {
+        color: var(--accent);
+        margin-bottom: 0.7rem;
+        font-size: 1.15rem;
+    }
+
+    .stack-card p {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+    }
+
+    /* =========================
+       PORTFOLIO
+    ========================== */
+
+    .portfolio-subsection {
+        margin-bottom: 3rem;
+    }
+
+    .portfolio-subsection h3 {
+        font-size: 1.32rem;
+        color: var(--accent);
+        border-bottom: 2px solid var(--accent);
+        padding-bottom: 0.4rem;
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .project-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1.4rem;
+    }
+
+    .project-card {
+        background: var(--sidebar-bg);
+        padding: 1.5rem;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px var(--card-shadow);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        border-left: 3px solid var(--accent);
+    }
+
+    .project-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 14px 30px var(--card-shadow);
+    }
+
+    .project-card h4 {
+        color: var(--accent);
+        margin-bottom: 0.7rem;
+        font-size: 1.1rem;
+    }
+
+    .project-card p {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+    }
+
+    .tech-tags {
+        margin-top: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+    }
+
+    .tech-tag {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.55rem;
+        border-radius: 5px;
+        background: var(--project-detail-bg);
+        color: var(--text-light);
+    }
+
+    /* =========================
+       RESUME BUTTONS
+    ========================== */
+
+    .resume-download-buttons {
+        display: flex;
+        gap: 1.2rem;
+        margin: 2.1rem 0 2.2rem 0;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .download-btn {
+        background: var(--accent);
+        color: var(--bg);
+        border: none;
+        padding: 0.92rem 2rem;
+        font-size: 1.05rem;
+        border-radius: 8px;
+        font-weight: 700;
+        cursor: pointer;
+        box-shadow: 0 2px 10px var(--card-shadow);
+        transition: background 0.22s, color 0.22s, transform 0.17s;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        letter-spacing: 0.02em;
+        min-width: 200px;
+    }
+
+    .download-btn:hover {
+        background: var(--button-hover);
+        color: var(--text-light);
+        transform: translateY(-2px) scale(1.03);
+    }
+
+    .loader {
+        border: 3px solid rgba(255,255,255,0.3);
+        border-top: 3px solid var(--bg);
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        animation: spin 1s linear infinite;
+        margin-right: 10px;
+        display: none;
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    /* =========================
+       RESUME
+    ========================== */
+
+    .resume-section {
+        background-color: var(--sidebar-bg);
+        padding: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px var(--card-shadow);
+        margin-bottom: 2.3rem;
+    }
+
+    .resume-section h3 {
+        color: var(--accent);
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        border-bottom: 2px solid var(--accent);
+        padding-bottom: 0.4rem;
+    }
+
+    .resume-item {
+        margin-bottom: 1.5rem;
+    }
+
+    .resume-item h4 {
+        font-size: 1.09rem;
+        color: var(--text-light);
+        margin-bottom: 0.2rem;
+    }
+
+    .resume-item p.subtitle {
+        font-size: 0.96rem;
+        color: var(--text-muted);
+        margin-bottom: 0.44rem;
+    }
+
+    .resume-item ul {
+        list-style: disc;
+        padding-left: 1.2rem;
+    }
+
+    .resume-item ul li {
+        margin-bottom: 0.3rem;
+    }
+
+    /* =========================
+       CONTACT
+    ========================== */
+
+    #contact p {
+        font-size: 1.08rem;
+        color: var(--text-light);
+        margin-bottom: 0.88rem;
+    }
+
+    #contact p a {
+        color: var(--accent);
+    }
+
+    #contact p a:hover {
+        color: var(--text-light);
+        text-decoration: underline;
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    .footer-note {
+        text-align: center;
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        margin-top: 2rem;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+
+    @media (max-width: 950px) {
+
+        .main {
+            padding: 2rem 1rem;
         }
 
-        html {
-            scroll-behavior: smooth;
+        .hero-name {
+            font-size: 2rem;
         }
+
+        section {
+            max-width: 100%;
+        }
+    }
+
+    @media (max-width: 768px) {
 
         body {
-            font-family: 'Roboto', sans-serif;
-            background: var(--bg);
-            color: var(--text-light);
-            display: flex;
-            min-height: 100vh;
-            line-height: 1.6;
-            overflow-x: hidden;
+            flex-direction: column;
         }
 
-        /* =========================
-           SIDEBAR
-        ========================== */
-
         .sidebar {
-            background: var(--sidebar-bg);
-            width: 280px;
-            padding: 2.5rem 1.5rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            height: 100vh;
-            box-shadow: 2px 0 10px var(--card-shadow);
-            flex-shrink: 0;
-            z-index: 100;
+            width: 100%;
+            height: auto;
+            flex-direction: row;
+            justify-content: center;
+            padding: 1rem;
+            position: static;
+            box-shadow: 0 2px 10px var(--card-shadow);
         }
 
         .profile-img {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            border: 4px solid var(--accent);
-            object-fit: cover;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 0 15px rgba(0,188,212,0.5);
-            transition: transform 0.3s ease;
-        }
-
-        .profile-img:hover {
-            transform: scale(1.06);
+            width: 70px;
+            height: 70px;
+            margin-bottom: 0;
+            margin-right: 1rem;
         }
 
         .sidebar h2 {
-            font-size: 1.6rem;
-            margin-bottom: 2rem;
-            color: var(--accent);
-            text-align: center;
-            letter-spacing: 0.05em;
-            font-weight: 700;
+            display: none;
+        }
+
+        .sidebar nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 0;
+        }
+
+        .sidebar nav a {
+            margin: 0.25rem;
+            padding: 0.55rem 0.7rem;
+            font-size: 0.82rem;
+        }
+
+        .main {
+            padding: 1.5rem 0.8rem;
+        }
+
+        .hero {
+            margin-top: 1rem;
+        }
+
+        .hero-name {
+            font-size: 1.7rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.05rem;
+        }
+
+        .hero-cards-row {
+            gap: 0.8rem;
+        }
+
+        .hero-card {
+            width: 155px;
+            height: 170px;
+        }
+
+        section h2 {
+            font-size: 1.8rem;
+        }
+
+        #skills .skill-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .project-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 480px) {
+
+        .sidebar {
+            flex-direction: column;
+        }
+
+        .profile-img {
+            margin-right: 0;
+            margin-bottom: 0.7rem;
         }
 
         .sidebar nav {
             width: 100%;
-            margin-top: 1rem;
         }
 
         .sidebar nav a {
-            color: var(--text-light);
-            text-decoration: none;
-            margin: 0.75rem 0;
-            padding: 0.85rem 1.2rem;
-            border-radius: 8px;
-            width: 100%;
-            text-align: center;
-            display: block;
-            transition: all 0.3s ease;
-            font-weight: 400;
-            font-size: 1.05rem;
-        }
-
-        .sidebar nav a:hover,
-        .sidebar nav a.active {
-            background: var(--accent);
-            color: var(--bg);
-            transform: translateX(5px);
-            box-shadow: 0 4px 10px rgba(0,188,212,0.4);
-        }
-
-        /* =========================
-           MAIN
-        ========================== */
-
-        .main {
-            flex-grow: 1;
-            padding: 3rem 1rem;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        section {
-            margin: 0 auto 3.2rem auto;
-            padding-bottom: 1.8rem;
-            border-bottom: 1px dashed var(--text-muted);
-            max-width: 900px;
-        }
-
-        section:last-of-type {
-            border-bottom: none;
-        }
-
-        section h2 {
-            font-size: 2.3rem;
-            border-bottom: 3px solid var(--accent);
-            padding-bottom: 0.6rem;
-            margin-bottom: 2.2rem;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
-
-        /* =========================
-           HERO
-        ========================== */
-
-        .hero {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 4.5rem;
-            margin-top: 2.5rem;
+            width: 45%;
         }
 
         .hero-name {
-            font-size: 2.2rem;
-            color: var(--accent);
-            font-weight: 700;
-            margin-bottom: 1rem;
-            text-align: center;
-            letter-spacing: 1px;
-            max-width: 95%;
+            font-size: 1.5rem;
         }
 
-        .hero-tagline {
-            max-width: 820px;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 1.12rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .highlight {
-            color: var(--accent);
-            font-weight: 700;
-        }
-
-        .hero-cards-row {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1.2rem;
+        .hero-subtitle {
+            font-size: 0.95rem;
         }
 
         .hero-card {
-            background-color: var(--sidebar-bg);
-            width: 185px;
-            height: 205px;
-            border-radius: 17px;
-            box-shadow: 0 8px 25px var(--card-shadow);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: var(--text-light);
-            position: relative;
-            transform-style: preserve-3d;
-            transition: transform 0.6s ease;
+            width: 44vw;
+            min-width: 135px;
+            height: 155px;
         }
-
-        .hero-card:hover {
-            transform: rotateY(180deg);
-        }
-
-        .hero-card-front,
-        .hero-card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            border-radius: inherit;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 1rem;
-        }
-
-        .hero-card-back {
-            background-color: var(--accent);
-            color: var(--bg);
-            transform: rotateY(180deg);
-        }
-
-        .hero-card h3 {
-            font-size: 1.15rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .hero-card p {
-            font-size: 0.9rem;
-        }
-
-        /* =========================
-           ABOUT
-        ========================== */
-
-        #about p {
-            font-size: 1.08rem;
-            color: var(--text-light);
-            margin-bottom: 1.15rem;
-        }
-
-        .ai-feature {
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(0,188,212,0.12),
-                    rgba(30,41,59,0.95)
-                );
-
-            border: 1px solid rgba(0,188,212,0.35);
-            border-radius: 15px;
-            padding: 1.5rem;
-            margin: 2rem 0;
-            box-shadow: 0 8px 25px var(--card-shadow);
-        }
-
-        .ai-feature h3 {
-            color: var(--accent);
-            margin-bottom: 0.8rem;
-        }
-
-        .automation-flow {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            gap: 0.6rem;
-            margin-top: 1.3rem;
-            font-weight: 500;
-        }
-
-        .automation-step {
-            background: var(--sidebar-bg);
-            border-radius: 8px;
-            padding: 0.55rem 0.8rem;
-            border: 1px solid rgba(148,163,184,0.25);
-        }
-
-        .arrow {
-            color: var(--accent);
-            font-weight: 700;
-        }
-
-        /* =========================
-           SKILLS
-        ========================== */
 
         #skills .skill-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-            gap: 1.2rem;
+            grid-template-columns: 1fr;
         }
 
-        .skill-category {
-            margin-bottom: 2rem;
+        section h2 {
+            font-size: 1.55rem;
         }
 
-        .skill-category h3 {
-            color: var(--accent);
-            margin-bottom: 1rem;
-            border-bottom: 2px solid var(--accent);
-            padding-bottom: 0.4rem;
+        #about p {
+            font-size: 1rem;
         }
+    }
 
-        .skill-item {
-            background: var(--sidebar-bg);
-            padding: 1.15rem;
-            border-radius: 11px;
-            box-shadow: 0 4px 10px var(--card-shadow);
-            text-align: center;
-            font-size: 1.03rem;
-            font-weight: 500;
-            transition: transform 0.3s ease, background 0.22s;
-        }
+</style>
 
-        .skill-item:hover {
-            transform: translateY(-5px) scale(1.03);
-            background: var(--accent);
-            color: var(--bg);
-        }
+</head><body id="portfolio-body"><!-- =========================
+     SIDEBAR
+========================== -->
 
-        /* =========================
-           PORTFOLIO
-        ========================== */
+<div class="sidebar">
 
-        .portfolio-subsection {
-            margin-bottom: 3rem;
-        }
+    <img
+        class="profile-img"
+        src="https://i.postimg.cc/RJfcGcSS/IMG-20230123-WA0002.jpg"
+        alt="Himanshu Sehgal Profile"
+    />
 
-        .portfolio-subsection h3 {
-            font-size: 1.32rem;
-            color: var(--accent);
-            border-bottom: 2px solid var(--accent);
-            padding-bottom: 0.4rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
+    <h2>Himanshu Sehgal</h2>
 
-        .project-carousel {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2rem;
-            align-items: stretch;
-        }
+    <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#automation">AI Automation</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#resume">Resume</a>
+        <a href="#contact">Contact</a>
+    </nav>
 
-        .video-card {
-            width: 315px;
-            min-height: 400px;
-            border-radius: 19px;
-            box-shadow: 0 8px 24px var(--card-shadow);
-            background-color: var(--sidebar-bg);
-            color: var(--text-light);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            padding: 1rem 1.1rem 1.1rem;
-            position: relative;
-            overflow: hidden;
-            transition: box-shadow 0.24s, transform 0.22s;
-        }
+</div>
 
-        .video-card:hover {
-            box-shadow:
-                0 16px 40px var(--card-shadow),
-                0 0 0 2px var(--accent);
 
-            transform: translateY(-5px) scale(1.03);
-        }
-
-        .video-thumbnail-container {
-            position: relative;
-            width: 100%;
-            height: 210px;
-            border-radius: 13px;
-            overflow: hidden;
-            margin-bottom: 1.2rem;
-            background-color: #000;
-            box-shadow: 0 4px 14px var(--card-shadow);
-        }
-
-        .video-card h3 {
-            font-size: 1.07rem;
-            color: var(--accent);
-            margin-bottom: 0.6rem;
-            text-align: center;
-            line-height: 1.3;
-            text-transform: uppercase;
-            font-weight: 700;
-        }
-
-        .video-card p {
-            font-size: 0.98rem;
-            text-align: center;
-            color: var(--text-muted);
-        }
-
-        /* =========================
-           RESUME
-        ========================== */
-
-        .resume-download-buttons {
-            display: flex;
-            gap: 1.2rem;
-            margin: 2.1rem 0 2.2rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .download-btn {
-            background: var(--accent);
-            color: var(--bg);
-            border: none;
-            padding: 0.92rem 2rem;
-            font-size: 1.05rem;
-            border-radius: 8px;
-            font-weight: 700;
-            cursor: pointer;
-            box-shadow: 0 2px 10px var(--card-shadow);
-            transition:
-                background 0.22s,
-                color 0.22s,
-                transform 0.17s;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 200px;
-        }
-
-        .download-btn:hover {
-            background: var(--button-hover);
-            color: var(--text-light);
-            transform: translateY(-2px) scale(1.04);
-        }
-
-        .loader {
-            border: 3px solid rgba(255,255,255,0.3);
-            border-top: 3px solid var(--bg);
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            animation: spin 1s linear infinite;
-            margin-right: 10px;
-            display: none;
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        .resume-section {
-            background-color: var(--sidebar-bg);
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px var(--card-shadow);
-            margin-bottom: 2.3rem;
-        }
-
-        .resume-section h3 {
-            color: var(--accent);
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            border-bottom: 2px solid var(--accent);
-            padding-bottom: 0.4rem;
-        }
-
-        .resume-item {
-            margin-bottom: 1.5rem;
-        }
-
-        .resume-item h4 {
-            font-size: 1.09rem;
-            color: var(--text-light);
-            margin-bottom: 0.2rem;
-        }
-
-        .resume-item p.subtitle {
-            font-size: 0.96rem;
-            color: var(--text-muted);
-            margin-bottom: 0.44rem;
-        }
-
-        .resume-item ul {
-            list-style: disc;
-            padding-left: 1.2rem;
-        }
-
-        .resume-item ul li {
-            margin-bottom: 0.3rem;
-        }
-
-        /* =========================
-           CONTACT
-        ========================== */
-
-        #contact p {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            margin-bottom: 0.88rem;
-        }
-
-        #contact p a {
-            color: var(--accent);
-        }
-
-        #contact p a:hover {
-            color: var(--text-light);
-            text-decoration: underline;
-        }
-
-        /* =========================
-           RESPONSIVE
-        ========================== */
-
-        @media (max-width: 950px) {
-
-            .main {
-                padding: 2rem 0.8rem;
-            }
-
-            .hero-name {
-                font-size: 1.8rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-
-            body {
-                flex-direction: column;
-            }
-
-            .sidebar {
-                width: 100%;
-                height: auto;
-                flex-direction: row;
-                justify-content: space-around;
-                padding: 1.5rem 1rem;
-                position: static;
-            }
-
-            .profile-img {
-                width: 80px;
-                height: 80px;
-                margin-bottom: 0;
-                margin-right: 1rem;
-            }
-
-            .sidebar h2 {
-                display: none;
-            }
-
-            .sidebar nav {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                margin-top: 0;
-            }
-
-            .sidebar nav a {
-                margin: 0.3rem;
-                padding: 0.6rem 0.8rem;
-                font-size: 0.9rem;
-            }
-
-            .hero-cards-row {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .hero-card {
-                width: 90vw;
-                max-width: 360px;
-            }
-
-            .project-carousel {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .video-card {
-                width: 95vw;
-                max-width: 400px;
-            }
-        }
-
-        @media (max-width: 480px) {
-
-            .sidebar {
-                flex-direction: column;
-                align-items: center;
-                padding-bottom: 0.5rem;
-            }
-
-            .profile-img {
-                margin-bottom: 1rem;
-                margin-right: 0;
-            }
-
-            .sidebar nav {
-                flex-direction: column;
-            }
-
-            .sidebar nav a {
-                width: 80%;
-            }
-
-            section h2 {
-                font-size: 1.9rem;
-            }
-        }
-
-    </style>
-</head>
-
-<body id="portfolio-body">
+<div class="main">
 
     <!-- =========================
-         SIDEBAR
+         HERO
     ========================== -->
 
-    <div class="sidebar">
+    <div class="hero">
 
-        <img
-            class="profile-img"
-            src="https://i.postimg.cc/RJfcGcSS/IMG-20230123-WA0002.jpg"
-            alt="Himanshu Sehgal Profile"
-        >
+        <h1 class="hero-name">
+            Himanshu Sehgal
+        </h1>
 
-        <h2>Himanshu Sehgal</h2>
+        <div class="hero-subtitle">
+            <strong>AI Automation & Business Systems Developer</strong>
+        </div>
 
-        <nav>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#resume">Resume</a>
-            <a href="#contact">Contact</a>
-        </nav>
+        <div class="hero-tagline">
+            Building practical business automation systems using
+            Google Workspace, Apps Script, Python, SQL, APIs, AI and
+            modern web technologies.
+        </div>
+
+
+        <div class="hero-cards-row">
+
+            <div class="hero-card">
+                <div class="hero-card-front">
+                    <h3>AI Automation</h3>
+                    <p>Intelligent Workflows</p>
+                </div>
+                <div class="hero-card-back">
+                    <h3>AI + Business</h3>
+                    <p>Practical Automation</p>
+                </div>
+            </div>
+
+
+            <div class="hero-card">
+                <div class="hero-card-front">
+                    <h3>Python</h3>
+                    <p>Automation & Backend</p>
+                </div>
+                <div class="hero-card-back">
+                    <h3>Python</h3>
+                    <p>Business Automation</p>
+                </div>
+            </div>
+
+
+            <div class="hero-card">
+                <div class="hero-card-front">
+                    <h3>SQL</h3>
+                    <p>Data & Queries</p>
+                </div>
+                <div class="hero-card-back">
+                    <h3>SQL</h3>
+                    <p>Business Data</p>
+                </div>
+            </div>
+
+
+            <div class="hero-card">
+                <div class="hero-card-front">
+                    <h3>Apps Script</h3>
+                    <p>Google Automation</p>
+                </div>
+                <div class="hero-card-back">
+                    <h3>Automation</h3>
+                    <p>Custom Workflows</p>
+                </div>
+            </div>
+
+
+            <div class="hero-card">
+                <div class="hero-card-front">
+                    <h3>Google Sheets</h3>
+                    <p>Advanced MIS</p>
+                </div>
+                <div class="hero-card-back">
+                    <h3>Data Systems</h3>
+                    <p>Automated Reporting</p>
+                </div>
+            </div>
+
+
+            <div class="hero-card">
+                <div class="hero-card-front">
+                    <h3>APIs</h3>
+                    <p>System Integration</p>
+                </div>
+                <div class="hero-card-back">
+                    <h3>Integrations</h3>
+                    <p>Connect Systems</p>
+                </div>
+            </div>
+
+
+            <div class="hero-card">
+                <div class="hero-card-front">
+                    <h3>Web Apps</h3>
+                    <p>Business Applications</p>
+                </div>
+                <div class="hero-card-back">
+                    <h3>Full Workflow</h3>
+                    <p>Frontend + Backend</p>
+                </div>
+            </div>
+
+
+            <div class="hero-card">
+                <div class="hero-card-front">
+                    <h3>GitHub</h3>
+                    <p>Version Control</p>
+                </div>
+                <div class="hero-card-back">
+                    <h3>Development</h3>
+                    <p>Source Management</p>
+                </div>
+            </div>
+
+
+            <div class="hero-card">
+                <div class="hero-card-front">
+                    <h3>Render</h3>
+                    <p>Deployment</p>
+                </div>
+                <div class="hero-card-back">
+                    <h3>Cloud Deployment</h3>
+                    <p>Live Applications</p>
+                </div>
+            </div>
+
+
+            <div class="hero-card">
+                <div class="hero-card-front">
+                    <h3>Power BI</h3>
+                    <p>Dashboards</p>
+                </div>
+                <div class="hero-card-back">
+                    <h3>Analytics</h3>
+                    <p>Decision Support</p>
+                </div>
+            </div>
+
+
+            <div class="hero-card">
+                <div class="hero-card-front">
+                    <h3>Looker Studio</h3>
+                    <p>Visualization</p>
+                </div>
+                <div class="hero-card-back">
+                    <h3>MIS Analytics</h3>
+                    <p>Live Reporting</p>
+                </div>
+            </div>
+
+
+            <div class="hero-card">
+                <div class="hero-card-front">
+                    <h3>AppSheet</h3>
+                    <p>No-Code Apps</p>
+                </div>
+                <div class="hero-card-back">
+                    <h3>Mobile Systems</h3>
+                    <p>Business Apps</p>
+                </div>
+            </div>
+
+        </div>
 
     </div>
 
 
     <!-- =========================
-         MAIN
+         ABOUT
     ========================== -->
 
-    <div class="main">
+    <section id="about">
+
+        <h2>About</h2>
+
+        <p>
+            I specialize in building practical business automation systems
+            that connect people, processes, data and technology.
+        </p>
+
+        <p>
+            My core experience includes Google Sheets, Excel, Google Apps Script,
+            workflow automation, dashboards, SQL, Python, APIs and business
+            applications.
+        </p>
+
+        <p>
+            I work at the intersection of <strong>business operations,
+            MIS, automation and technology</strong> — understanding the
+            operational problem first and then designing a system that
+            reduces repetitive work, improves visibility and helps management
+            make better decisions.
+        </p>
+
+        <p>
+            My current focus is expanding this capability into
+            <strong>AI-powered business automation</strong>, where AI is
+            integrated directly into applications and workflows rather than
+            being treated as a standalone chatbot.
+        </p>
 
 
-        <!-- =========================
-             HERO
-        ========================== -->
+        <div class="highlight-box">
 
-        <div class="hero">
+            <strong>My approach:</strong>
 
-            <h1 class="hero-name">
-                Himanshu Sehgal |
-                Business Automation Developer & AI Automation Specialist
-            </h1>
+            Business Problem → Data → Process → Automation → AI → API Integration
+            → Deployment → Monitoring
 
-            <p class="hero-tagline">
+        </div>
 
-                Building practical business systems using
-                <span class="highlight">
-                    Python, SQL, Excel, Google Sheets, Apps Script, APIs, GitHub, Render and AI
-                </span>
-                to automate repetitive work, improve visibility and support better decision-making.
-
-            </p>
+    </section>
 
 
-            <div class="hero-cards-row">
+    <!-- =========================
+         SKILLS
+    ========================== -->
+
+    <section id="skills">
+
+        <h2>Skills</h2>
+
+        <div class="skill-grid">
+
+            <div class="skill-item ai">
+                AI Automation & AI Integrations
+            </div>
+
+            <div class="skill-item">
+                Python Automation
+            </div>
+
+            <div class="skill-item">
+                SQL & Database Operations
+            </div>
+
+            <div class="skill-item">
+                Advanced Google Sheets
+            </div>
+
+            <div class="skill-item">
+                Advanced Excel
+            </div>
+
+            <div class="skill-item">
+                Google Apps Script
+            </div>
+
+            <div class="skill-item">
+                API Integration
+            </div>
+
+            <div class="skill-item">
+                Workflow Automation
+            </div>
+
+            <div class="skill-item">
+                HTML / CSS / JavaScript
+            </div>
+
+            <div class="skill-item">
+                Web Applications
+            </div>
+
+            <div class="skill-item">
+                Business Portals
+            </div>
+
+            <div class="skill-item">
+                Chatbots
+            </div>
+
+            <div class="skill-item">
+                Power BI
+            </div>
+
+            <div class="skill-item">
+                Looker Studio
+            </div>
+
+            <div class="skill-item">
+                AppSheet
+            </div>
+
+            <div class="skill-item">
+                GitHub
+            </div>
+
+            <div class="skill-item">
+                Render Deployment
+            </div>
+
+            <div class="skill-item">
+                Email Automation
+            </div>
+
+            <div class="skill-item">
+                WhatsApp Automation
+            </div>
+
+            <div class="skill-item">
+                MIS & Reporting
+            </div>
+
+            <div class="skill-item">
+                Process Optimization
+            </div>
+
+            <div class="skill-item">
+                KPI / KRA Systems
+            </div>
+
+        </div>
+
+    </section>
 
 
-                <!-- PYTHON -->
+    <!-- =========================
+         AI AUTOMATION STACK
+    ========================== -->
 
-                <div class="hero-card">
+    <section id="automation">
 
-                    <div class="hero-card-front">
-                        <h3>Python</h3>
-                        <p>Automation & Data Processing</p>
-                    </div>
+        <h2>AI Automation</h2>
 
-                    <div class="hero-card-back">
-                        <h3>Python Automation</h3>
-                        <p>APIs • ETL • Business Tools</p>
+        <div class="stack-grid">
+
+            <div class="stack-card">
+                <h3>AI Integration</h3>
+                <p>
+                    Integrating AI capabilities directly into business
+                    applications, workflows, dashboards and internal tools.
+                </p>
+            </div>
+
+
+            <div class="stack-card">
+                <h3>Python Automation</h3>
+                <p>
+                    Using Python to process data, automate repetitive
+                    operations, build backend logic and connect external systems.
+                </p>
+            </div>
+
+
+            <div class="stack-card">
+                <h3>API Integration</h3>
+                <p>
+                    Connecting business systems through APIs instead of
+                    relying only on manual copy-paste workflows.
+                </p>
+            </div>
+
+
+            <div class="stack-card">
+                <h3>Google Workspace</h3>
+                <p>
+                    Building automated workflows around Sheets, Forms,
+                    Drive, Gmail and Apps Script.
+                </p>
+            </div>
+
+
+            <div class="stack-card">
+                <h3>Business Applications</h3>
+                <p>
+                    Developing custom portals, forms, dashboards and
+                    workflow systems around real operational requirements.
+                </p>
+            </div>
+
+
+            <div class="stack-card">
+                <h3>Deployment</h3>
+                <p>
+                    Using GitHub for source management and Render for
+                    deploying live applications and backend services.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PORTFOLIO
+    ========================== -->
+
+    <section id="portfolio">
+
+        <h2>Portfolio</h2>
+
+
+        <div class="portfolio-subsection">
+
+            <h3>Business Automation Systems</h3>
+
+            <div class="project-grid">
+
+
+                <div class="project-card">
+
+                    <h4>Business Workflow Automation</h4>
+
+                    <p>
+                        Designed workflow systems to manage tasks,
+                        assignments, follow-ups, reporting and operational
+                        visibility.
+                    </p>
+
+                    <div class="tech-tags">
+                        <span class="tech-tag">Google Sheets</span>
+                        <span class="tech-tag">Apps Script</span>
+                        <span class="tech-tag">Automation</span>
                     </div>
 
                 </div>
 
 
-                <!-- SQL -->
+                <div class="project-card">
 
-                <div class="hero-card">
+                    <h4>AI-Powered Business Automation</h4>
 
-                    <div class="hero-card-front">
-                        <h3>SQL</h3>
-                        <p>Business Data & Queries</p>
-                    </div>
+                    <p>
+                        Developing the capability to integrate AI into
+                        business workflows for classification, extraction,
+                        summarization, decision support and automation.
+                    </p>
 
-                    <div class="hero-card-back">
-                        <h3>SQL</h3>
-                        <p>Structured Business Data</p>
-                    </div>
-
-                </div>
-
-
-                <!-- AI -->
-
-                <div class="hero-card">
-
-                    <div class="hero-card-front">
-                        <h3>AI Automation</h3>
-                        <p>AI Inside Business Workflows</p>
-                    </div>
-
-                    <div class="hero-card-back">
-                        <h3>AI Integration</h3>
-                        <p>Extraction • Classification • Assistance</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">AI</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">API</span>
                     </div>
 
                 </div>
 
 
-                <!-- APPS SCRIPT -->
+                <div class="project-card">
 
-                <div class="hero-card">
+                    <h4>Management Information Systems</h4>
 
-                    <div class="hero-card-front">
-                        <h3>Apps Script</h3>
-                        <p>Google Workspace Automation</p>
-                    </div>
+                    <p>
+                        Built automated MIS systems for reporting,
+                        monitoring, employee performance, KPIs and
+                        management visibility.
+                    </p>
 
-                    <div class="hero-card-back">
-                        <h3>Workflow Automation</h3>
-                        <p>Sheets • Gmail • Forms • APIs</p>
-                    </div>
-
-                </div>
-
-
-                <!-- EXCEL -->
-
-                <div class="hero-card">
-
-                    <div class="hero-card-front">
-                        <h3>Excel</h3>
-                        <p>Advanced Reporting & Modelling</p>
-                    </div>
-
-                    <div class="hero-card-back">
-                        <h3>Business Analytics</h3>
-                        <p>Power Query • Dashboards • Models</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">MIS</span>
+                        <span class="tech-tag">SQL</span>
+                        <span class="tech-tag">Dashboards</span>
                     </div>
 
                 </div>
 
 
-                <!-- GOOGLE SHEETS -->
+                <div class="project-card">
 
-                <div class="hero-card">
+                    <h4>Custom Web Portals</h4>
 
-                    <div class="hero-card-front">
-                        <h3>Google Sheets</h3>
-                        <p>Operational Systems</p>
-                    </div>
+                    <p>
+                        Developed custom business portals and web
+                        applications for internal operations and
+                        management workflows.
+                    </p>
 
-                    <div class="hero-card-back">
-                        <h3>Advanced Sheets</h3>
-                        <p>Automation • Reporting • Control</p>
-                    </div>
-
-                </div>
-
-
-                <!-- APIs -->
-
-                <div class="hero-card">
-
-                    <div class="hero-card-front">
-                        <h3>APIs</h3>
-                        <p>System Integration</p>
-                    </div>
-
-                    <div class="hero-card-back">
-                        <h3>API Integration</h3>
-                        <p>Connecting Business Systems</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">JavaScript</span>
                     </div>
 
                 </div>
 
 
-                <!-- GITHUB -->
+                <div class="project-card">
 
-                <div class="hero-card">
+                    <h4>Reporting Automation</h4>
 
-                    <div class="hero-card-front">
-                        <h3>GitHub</h3>
-                        <p>Version Control</p>
-                    </div>
+                    <p>
+                        Automated recurring reports, data preparation,
+                        validation and management reporting processes.
+                    </p>
 
-                    <div class="hero-card-back">
-                        <h3>Development Workflow</h3>
-                        <p>Git • Projects • Deployment</p>
-                    </div>
-
-                </div>
-
-
-                <!-- RENDER -->
-
-                <div class="hero-card">
-
-                    <div class="hero-card-front">
-                        <h3>Render</h3>
-                        <p>Cloud Deployment</p>
-                    </div>
-
-                    <div class="hero-card-back">
-                        <h3>Application Deployment</h3>
-                        <p>Python • APIs • Web Apps</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Excel</span>
+                        <span class="tech-tag">Sheets</span>
+                        <span class="tech-tag">Python</span>
                     </div>
 
                 </div>
 
 
-                <!-- POWER BI -->
+                <div class="project-card">
 
-                <div class="hero-card">
+                    <h4>Communication Automation</h4>
 
-                    <div class="hero-card-front">
-                        <h3>Power BI</h3>
-                        <p>Business Intelligence</p>
-                    </div>
+                    <p>
+                        Built automated email and WhatsApp workflows for
+                        alerts, follow-ups, reporting and operational
+                        communication.
+                    </p>
 
-                    <div class="hero-card-back">
-                        <h3>Dashboards</h3>
-                        <p>KPI • Reporting • Insights</p>
-                    </div>
-
-                </div>
-
-
-                <!-- WEB APPS -->
-
-                <div class="hero-card">
-
-                    <div class="hero-card-front">
-                        <h3>Web Apps</h3>
-                        <p>Business Applications</p>
-                    </div>
-
-                    <div class="hero-card-back">
-                        <h3>Custom Systems</h3>
-                        <p>Forms • Portals • Workflows</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">API</span>
+                        <span class="tech-tag">Email</span>
+                        <span class="tech-tag">WhatsApp</span>
                     </div>
 
                 </div>
 
 
-                <!-- CHATBOTS -->
+                <div class="project-card">
 
-                <div class="hero-card">
+                    <h4>GitHub Development Workflow</h4>
 
-                    <div class="hero-card-front">
-                        <h3>Chatbots</h3>
-                        <p>Conversational Interfaces</p>
-                    </div>
+                    <p>
+                        Maintaining application source code, changes and
+                        development versions through GitHub-based workflows.
+                    </p>
 
-                    <div class="hero-card-back">
-                        <h3>AI Assistants</h3>
-                        <p>Business Information & Support</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">GitHub</span>
+                        <span class="tech-tag">Git</span>
+                        <span class="tech-tag">Version Control</span>
                     </div>
 
                 </div>
 
 
-                <!-- BUSINESS SYSTEMS -->
+                <div class="project-card">
 
-                <div class="hero-card">
+                    <h4>Cloud Application Deployment</h4>
 
-                    <div class="hero-card-front">
-                        <h3>Business Systems</h3>
-                        <p>Process & Workflow Design</p>
-                    </div>
+                    <p>
+                        Building deployment capability for Python and web
+                        applications using GitHub-connected cloud hosting
+                        environments such as Render.
+                    </p>
 
-                    <div class="hero-card-back">
-                        <h3>Process Automation</h3>
-                        <p>Problem → Working System</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Render</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Deployment</span>
                     </div>
 
                 </div>
@@ -911,1340 +1256,522 @@
 
         </div>
 
-
-        <!-- =========================
-             ABOUT
-        ========================== -->
-
-        <section id="about">
-
-            <h2>About</h2>
-
-
-            <p>
-
-                I specialize in
-                <span class="highlight">
-                    business process automation, MIS, data management and AI-enabled workflows
-                </span>.
-
-                My work combines practical business understanding with technical implementation
-                using Google Sheets, Apps Script, Excel, SQL, Python, APIs and AI technologies.
-
-            </p>
-
-
-            <p>
-
-                My approach is not limited to using pre-built automation templates.
-                I focus on understanding the actual business problem, designing the workflow,
-                structuring the data and building the technical solution required to solve it.
-
-            </p>
-
-
-            <p>
-
-                I work at the intersection of
-                <span class="highlight">
-                    ground-level execution and management decision-making
-                </span>.
-
-                I understand how staff actually perform processes and translate operational
-                problems into structured systems that provide managers with visibility,
-                control, reporting and accountability.
-
-            </p>
-
-
-            <p>
-
-                I have experience working with staff, supervisors, managers and business
-                stakeholders to convert repetitive manual activities into automated workflows,
-                dashboards, reporting systems, communication systems and custom business applications.
-
-            </p>
-
-
-            <p>
-
-                My current development focus is
-                <span class="highlight">
-                    AI-powered business automation
-                </span>.
-
-                I am learning to integrate AI directly into software workflows for information
-                extraction, classification, document processing, decision support,
-                reporting and intelligent business assistance.
-
-            </p>
-
-
-            <!-- AI AUTOMATION FLOW -->
-
-            <div class="ai-feature">
-
-                <h3>AI Automation Approach</h3>
-
-                <p>
-
-                    I focus on using AI as a component inside real software systems —
-                    not simply using a chatbot or copying a pre-built automation template.
-
-                </p>
-
-
-                <div class="automation-flow">
-
-                    <span class="automation-step">
-                        Business Problem
-                    </span>
-
-                    <span class="arrow">→</span>
-
-                    <span class="automation-step">
-                        Data / Input
-                    </span>
-
-                    <span class="arrow">→</span>
-
-                    <span class="automation-step">
-                        Python / Apps Script
-                    </span>
-
-                    <span class="arrow">→</span>
-
-                    <span class="automation-step">
-                        AI Processing
-                    </span>
-
-                    <span class="arrow">→</span>
-
-                    <span class="automation-step">
-                        SQL / Validation
-                    </span>
-
-                    <span class="arrow">→</span>
-
-                    <span class="automation-step">
-                        Business Action
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <!-- DEVELOPMENT FLOW -->
-
-            <div class="ai-feature">
-
-                <h3>From Development to Deployment</h3>
-
-                <p>
-
-                    My goal is to take an automation from an idea and local development
-                    environment to a working, accessible application.
-
-                </p>
-
-
-                <div class="automation-flow">
-
-                    <span class="automation-step">
-                        Problem
-                    </span>
-
-                    <span class="arrow">→</span>
-
-                    <span class="automation-step">
-                        Python
-                    </span>
-
-                    <span class="arrow">→</span>
-
-                    <span class="automation-step">
-                        SQL / API
-                    </span>
-
-                    <span class="arrow">→</span>
-
-                    <span class="automation-step">
-                        AI
-                    </span>
-
-                    <span class="arrow">→</span>
-
-                    <span class="automation-step">
-                        GitHub
-                    </span>
-
-                    <span class="arrow">→</span>
-
-                    <span class="automation-step">
-                        Render
-                    </span>
-
-                    <span class="arrow">→</span>
-
-                    <span class="automation-step">
-                        Working Application
-                    </span>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             SKILLS
-        ========================== -->
-
-        <section id="skills">
-
-            <h2>Skills</h2>
-
-
-            <!-- CORE -->
-
-            <div class="skill-category">
-
-                <h3>Core Automation & Development</h3>
-
-                <div class="skill-grid">
-
-                    <div class="skill-item">
-                        Python Automation
-                    </div>
-
-                    <div class="skill-item">
-                        SQL
-                    </div>
-
-                    <div class="skill-item">
-                        API Integration
-                    </div>
-
-                    <div class="skill-item">
-                        Google Apps Script
-                    </div>
-
-                    <div class="skill-item">
-                        JavaScript
-                    </div>
-
-                    <div class="skill-item">
-                        HTML / CSS
-                    </div>
-
-                    <div class="skill-item">
-                        Git & GitHub
-                    </div>
-
-                    <div class="skill-item">
-                        Web Applications
-                    </div>
-
-                    <div class="skill-item">
-                        Render Cloud Deployment
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- AI -->
-
-            <div class="skill-category">
-
-                <h3>AI Automation</h3>
-
-                <div class="skill-grid">
-
-                    <div class="skill-item">
-                        AI Workflow Integration
-                    </div>
-
-                    <div class="skill-item">
-                        AI Information Extraction
-                    </div>
-
-                    <div class="skill-item">
-                        AI Classification
-                    </div>
-
-                    <div class="skill-item">
-                        AI Business Assistants
-                    </div>
-
-                    <div class="skill-item">
-                        AI API Integration
-                    </div>
-
-                    <div class="skill-item">
-                        LLM-Based Automation
-                    </div>
-
-                    <div class="skill-item">
-                        Structured AI Outputs
-                    </div>
-
-                    <div class="skill-item">
-                        AI + Python Automation
-                    </div>
-
-                    <div class="skill-item">
-                        AI Application Deployment
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- DATA -->
-
-            <div class="skill-category">
-
-                <h3>Data & Reporting</h3>
-
-                <div class="skill-grid">
-
-                    <div class="skill-item">
-                        Advanced Excel
-                    </div>
-
-                    <div class="skill-item">
-                        Advanced Google Sheets
-                    </div>
-
-                    <div class="skill-item">
-                        Power Query
-                    </div>
-
-                    <div class="skill-item">
-                        Pivot Tables
-                    </div>
-
-                    <div class="skill-item">
-                        XLOOKUP / INDEX MATCH
-                    </div>
-
-                    <div class="skill-item">
-                        Looker Studio
-                    </div>
-
-                    <div class="skill-item">
-                        Power BI
-                    </div>
-
-                    <div class="skill-item">
-                        MIS Reporting
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- BUSINESS -->
-
-            <div class="skill-category">
-
-                <h3>Business Automation & Process</h3>
-
-                <div class="skill-grid">
-
-                    <div class="skill-item">
-                        Workflow Automation
-                    </div>
-
-                    <div class="skill-item">
-                        Process Optimization
-                    </div>
-
-                    <div class="skill-item">
-                        Email Automation
-                    </div>
-
-                    <div class="skill-item">
-                        WhatsApp Automation
-                    </div>
-
-                    <div class="skill-item">
-                        CRM Workflows
-                    </div>
-
-                    <div class="skill-item">
-                        KPI Systems
-                    </div>
-
-                    <div class="skill-item">
-                        PMS / FMS / NBD / CRR
-                    </div>
-
-                    <div class="skill-item">
-                        Business Process Design
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             PORTFOLIO
-        ========================== -->
-
-        <section id="portfolio">
-
-            <h2>Portfolio</h2>
-
-
-            <!-- AI AUTOMATION -->
-
-            <div class="portfolio-subsection">
-
-                <h3>AI & Business Automation</h3>
-
-                <div class="ai-feature">
-
-                    <h3>
-                        AI + Python + SQL + APIs
-                    </h3>
-
-                    <p>
-
-                        Building toward deployable AI automation systems where AI
-                        works together with Python, SQL, APIs and business workflows
-                        to reduce repetitive manual work.
-
-                    </p>
-
-
-                    <div class="automation-flow">
-
-                        <span class="automation-step">
-                            Input
-                        </span>
-
-                        <span class="arrow">→</span>
-
-                        <span class="automation-step">
-                            Python
-                        </span>
-
-                        <span class="arrow">→</span>
-
-                        <span class="automation-step">
-                            AI
-                        </span>
-
-                        <span class="arrow">→</span>
-
-                        <span class="automation-step">
-                            SQL
-                        </span>
-
-                        <span class="arrow">→</span>
-
-                        <span class="automation-step">
-                            Validation
-                        </span>
-
-                        <span class="arrow">→</span>
-
-                        <span class="automation-step">
-                            API / Action
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- VIDEOS -->
-
-            <div class="portfolio-subsection">
-
-                <h3>Video Projects</h3>
-
-                <div class="project-carousel">
-
-
-                    <!-- VIDEO 1 -->
-
-                    <div class="video-card">
-
-                        <div class="video-thumbnail-container">
-
-                            <iframe
-                                width="100%"
-                                height="100%"
-                                src="https://www.youtube.com/embed/4RL0rKn8XR8"
-                                title="How to create a free web application for business"
-                                frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                referrerpolicy="strict-origin-when-cross-origin"
-                                allowfullscreen>
-                            </iframe>
-
-                        </div>
-
-                        <h3>
-                            Free Business Web Application
-                        </h3>
-
-                        <p>
-
-                            Creating practical web applications for business
-                            processes using accessible technologies.
-
-                        </p>
-
-                    </div>
-
-
-                    <!-- VIDEO 2 -->
-
-                    <div class="video-card">
-
-                        <div class="video-thumbnail-container">
-
-                            <iframe
-                                width="100%"
-                                height="100%"
-                                src="https://www.youtube.com/embed/bKq2sNR6kDU"
-                                title="How to create a free chatbot for business"
-                                frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                referrerpolicy="strict-origin-when-cross-origin"
-                                allowfullscreen>
-                            </iframe>
-
-                        </div>
-
-                        <h3>
-                            Business Chatbot
-                        </h3>
-
-                        <p>
-
-                            Building conversational interfaces to make business
-                            information easier to access.
-
-                        </p>
-
-                    </div>
-
-
-                    <!-- VIDEO 3 -->
-
-                    <div class="video-card">
-
-                        <div class="video-thumbnail-container">
-
-                            <iframe
-                                width="100%"
-                                height="100%"
-                                src="https://www.youtube.com/embed/M8FV0WrC8MU"
-                                title="How to create a free web portal for business"
-                                frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                referrerpolicy="strict-origin-when-cross-origin"
-                                allowfullscreen>
-                            </iframe>
-
-                        </div>
-
-                        <h3>
-                            Business Web Portal
-                        </h3>
-
-                        <p>
-
-                            Developing business portals for operational management,
-                            reporting and centralized access.
-
-                        </p>
-
-                    </div>
-
-
-                    <!-- VIDEO 4 -->
-
-                    <div class="video-card">
-
-                        <div class="video-thumbnail-container">
-
-                            <iframe
-                                width="100%"
-                                height="100%"
-                                src="https://www.youtube.com/embed/D2B1HFZKRlo"
-                                title="How to create a free e-commerce website with Google"
-                                frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                referrerpolicy="strict-origin-when-cross-origin"
-                                allowfullscreen>
-                            </iframe>
-
-                        </div>
-
-                        <h3>
-                            Business E-Commerce Website
-                        </h3>
-
-                        <p>
-
-                            Building practical digital business solutions
-                            using accessible technologies.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             RESUME
-        ========================== -->
-
-        <section id="resume">
-
-            <h2>Resume</h2>
-
-
-            <div class="resume-download-buttons">
-
-                <a
-                    href="https://drive.google.com/file/d/193gyrRHYt46UxRa-VDKIg70doUAoBYPn/view?usp=sharing"
-                    class="download-btn"
-                    target="_blank">
-
-                    Download Resume
-
-                </a>
-
-
-                <button
-                    id="generatePdfBtn"
-                    class="download-btn">
-
-                    <span
-                        class="loader"
-                        id="pdfLoader">
-                    </span>
-
-                    <span id="pdfBtnText">
-                        Download Profile
-                    </span>
-
-                </button>
-
-            </div>
-
-
-            <!-- SUMMARY -->
-
-            <div class="resume-section">
-
-                <h3>
-                    Professional Summary
-                </h3>
-
-                <p>
-
-                    Business Automation and MIS professional experienced in designing
-                    and implementing practical systems for operational reporting,
-                    workflow management, communication, dashboards and process control.
-
-                </p>
-
-                <br>
-
-                <p>
-
-                    Core technical capabilities include
-                    <strong>
-                        Excel, Google Sheets, Google Apps Script, SQL, Python,
-                        API integration, web applications and automation.
-                    </strong>
-
-                </p>
-
-                <br>
-
-                <p>
-
-                    Currently expanding into
-                    <strong>
-                        AI-powered business automation
-                    </strong>
-                    by integrating AI capabilities directly into software workflows
-                    for information processing, classification, reporting and
-                    business assistance.
-
-                </p>
-
-                <br>
-
-                <p>
-
-                    Developing practical deployment capabilities using
-                    <strong>
-                        GitHub and Render
-                    </strong>
-                    to move Python and AI-enabled applications from development
-                    into accessible web applications.
-
-                </p>
-
-            </div>
-
-
-            <!-- EXPERIENCE -->
-
-            <div class="resume-section">
-
-                <h3>
-                    Work Experience
-                </h3>
-
-
-                <!-- JOB 1 -->
-
-                <div class="resume-item">
-
-                    <h4>
-                        MIS Officer
-                    </h4>
-
-                    <p class="subtitle">
-                        Hosexpert | 21/01/2025 – Present
-                    </p>
-
-                    <ul>
-
-                        <li>
-                            Leading automation and MIS system deployment for field
-                            operations and process management.
-                        </li>
-
-                        <li>
-                            Developed integrated dashboards, WhatsApp automation
-                            and client onboarding workflows.
-                        </li>
-
-                        <li>
-                            Worked with stakeholders to convert operational
-                            requirements into practical digital systems.
-                        </li>
-
-                        <li>
-                            Improved reporting visibility and process control
-                            through automation and structured MIS systems.
-                        </li>
-
-                    </ul>
-
-                </div>
-
-
-                <!-- JOB 2 -->
-
-                <div class="resume-item">
-
-                    <h4>
-                        Automation & MIS Consultant
-                    </h4>
-
-                    <p class="subtitle">
-                        Freelance / Contract | 11/03/2024 – 20/01/2025
-                    </p>
-
-                    <ul>
-
-                        <li>
-                            Built customized business automation systems
-                            for MSMEs and startups.
-                        </li>
-
-                        <li>
-                            Designed Project Management Systems for
-                            manufacturing clients.
-                        </li>
-
-                        <li>
-                            Automated task assignment, progress tracking
-                            and report generation.
-                        </li>
-
-                        <li>
-                            Developed Doer Scoring Management Systems with
-                            attendance, photo and location workflows.
-                        </li>
-
-                        <li>
-                            Automated sales reporting including NBD and CRR workflows.
-                        </li>
-
-                        <li>
-                            Implemented WhatsApp and Email automation systems.
-                        </li>
-
-                        <li>
-                            Created dynamic Looker Studio dashboards
-                            for management reporting.
-                        </li>
-
-                    </ul>
-
-                </div>
-
-
-                <!-- JOB 3 -->
-
-                <div class="resume-item">
-
-                    <h4>
-                        MIS Officer
-                    </h4>
-
-                    <p class="subtitle">
-                        Corporate Incentive Solutions Pvt. Ltd.
-                        | 16/01/2023 – 10/03/2024
-                    </p>
-
-                    <ul>
-
-                        <li>
-                            Created and maintained Google Sheets-based
-                            MIS panels.
-                        </li>
-
-                        <li>
-                            Managed reporting systems and client leaderboards.
-                        </li>
-
-                        <li>
-                            Automated bulk email and WhatsApp communication
-                            through internal panels.
-                        </li>
-
-                        <li>
-                            Managed application check-in and operational reports.
-                        </li>
-
-                    </ul>
-
-                </div>
-
-
-                <!-- JOB 4 -->
-
-                <div class="resume-item">
-
-                    <h4>
-                        MIS Officer
-                    </h4>
-
-                    <p class="subtitle">
-                        Fujiyama Power System Pvt. Ltd. (UTL)
-                        | 16/08/2021 – 15/01/2023
-                    </p>
-
-                    <ul>
-
-                        <li>
-                            Created process-based monitoring systems
-                            and workflow charts.
-                        </li>
-
-                        <li>
-                            Monitored and validated employee processes.
-                        </li>
-
-                        <li>
-                            Developed daily task and checklist reporting systems.
-                        </li>
-
-                        <li>
-                            Provided KRA and KPI-based reporting to management.
-                        </li>
-
-                    </ul>
-
-                </div>
-
-
-                <!-- JOB 5 -->
-
-                <div class="resume-item">
-
-                    <h4>
-                        Freelancer Process Specialist
-                    </h4>
-
-                    <p class="subtitle">
-                        Authridge Research Service Pvt. Ltd.
-                        | March 2019 – April 2020
-                    </p>
-
-                    <ul>
-
-                        <li>
-                            Worked as a freelance process specialist
-                            for a background verification service provider.
-                        </li>
-
-                    </ul>
-
-                </div>
-
-
-                <!-- JOB 6 -->
-
-                <div class="resume-item">
-
-                    <h4>
-                        Market Research & Processing Associate
-                    </h4>
-
-                    <p class="subtitle">
-                        Ocrex Enterprises Pvt. Ltd.
-                        | October 2015 – August 2018
-                    </p>
-
-                    <ul>
-
-                        <li>
-                            Worked with a company developing automated
-                            bank reconciliation technology.
-                        </li>
-
-                    </ul>
-
-                </div>
-
-            </div>
-
-
-            <!-- EDUCATION -->
-
-            <div class="resume-section">
-
-                <h3>
-                    Education
-                </h3>
-
-
-                <div class="resume-item">
-
-                    <h4>
-                        MBA
-                    </h4>
-
-                    <p class="subtitle">
-                        Punjab Technical University | 2013
-                    </p>
-
-                    <ul>
-                        <li>
-                            Grades: 70%
-                        </li>
-                    </ul>
-
-                </div>
-
-
-                <div class="resume-item">
-
-                    <h4>
-                        B.Com
-                    </h4>
-
-                    <p class="subtitle">
-                        DAV College Sector 10 Chandigarh | 2011
-                    </p>
-
-                    <ul>
-                        <li>
-                            Grades: 963/1800
-                        </li>
-                    </ul>
-
-                </div>
-
-
-                <div class="resume-item">
-
-                    <h4>
-                        12th Grade
-                    </h4>
-
-                    <p class="subtitle">
-                        DAV School Chandigarh | 2008
-                    </p>
-
-                    <ul>
-                        <li>
-                            Grades: 60%
-                        </li>
-                    </ul>
-
-                </div>
-
-
-                <div class="resume-item">
-
-                    <h4>
-                        10th Grade
-                    </h4>
-
-                    <p class="subtitle">
-                        Mount Carmel School Chandigarh | 2005
-                    </p>
-
-                    <ul>
-                        <li>
-                            Grades: 67%
-                        </li>
-                    </ul>
-
-                </div>
-
-            </div>
-
-
-            <!-- KEY SKILLS -->
-
-            <div class="resume-section">
-
-                <h3>
-                    Key Skills
-                </h3>
-
-
-                <p>
-
-                    <strong>
-                        AI & Automation:
-                    </strong>
-
-                    AI Automation, AI Workflow Integration,
-                    LLM Integration, AI Information Extraction,
-                    AI Classification, AI Business Assistants,
-                    Python Automation, API Integration,
-                    Workflow Automation
-
-                </p>
-
-                <br>
-
-
-                <p>
-
-                    <strong>
-                        Programming & Data:
-                    </strong>
-
-                    Python, SQL, Advanced Excel,
-                    Google Sheets, Power Query,
-                    Pivot Tables, XLOOKUP,
-                    INDEX MATCH, Data Analysis,
-                    MIS Reporting
-
-                </p>
-
-                <br>
-
-
-                <p>
-
-                    <strong>
-                        Google Workspace:
-                    </strong>
-
-                    Google Apps Script, Google Forms,
-                    Google Sheets, Google Workspace Automation,
-                    Gmail Automation, Prefilled Forms,
-                    Apps Script Web Applications
-
-                </p>
-
-                <br>
-
-
-                <p>
-
-                    <strong>
-                        Development:
-                    </strong>
-
-                    Python, JavaScript, HTML, CSS,
-                    APIs, Web Apps, Web Portals,
-                    Git, GitHub
-
-                </p>
-
-                <br>
-
-
-                <p>
-
-                    <strong>
-                        Deployment:
-                    </strong>
-
-                    Render, Python Application Deployment,
-                    Cloud Web Applications,
-                    API Deployment and Application Hosting
-
-                </p>
-
-                <br>
-
-
-                <p>
-
-                    <strong>
-                        Business Intelligence:
-                    </strong>
-
-                    Looker Studio, Power BI,
-                    KPI Dashboards, Reporting Automation,
-                    Data Visualization
-
-                </p>
-
-                <br>
-
-
-                <p>
-
-                    <strong>
-                        Business Systems:
-                    </strong>
-
-                    PMS, FMS, NBD, CRR,
-                    CRM Workflows, Process Optimization,
-                    Project Management, Delegation,
-                    Business Process Design
-
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             CONTACT
-        ========================== -->
-
-        <section id="contact">
-
-            <h2>
-                Contact
-            </h2>
-
-
-            <p>
-
-                I'm open to opportunities involving
-
-                <span class="highlight">
-                    Business Automation, AI Automation,
-                    MIS, Data, Process Improvement and
-                    ERP-related systems.
-                </span>
-
-            </p>
-
-
-            <p>
-
-                Email:
-
-                <a href="mailto:himanshusehgal320@gmail.com">
-                    himanshusehgal320@gmail.com
-                </a>
-
-            </p>
-
-
-            <p>
-                Phone: +918569890156
-            </p>
-
-
-            <p>
-
-                LinkedIn:
-
-                <a
-                    href="https://www.linkedin.com/in/himanshu-s-585a0a201"
-                    target="_blank">
-
-                    linkedin.com/in/himanshu-s-585a0a201
-
-                </a>
-
-            </p>
-
-
-            <p>
-
-                YouTube:
-
-                <a
-                    href="https://www.youtube.com/@sehgal_sheet_tricks3306"
-                    target="_blank">
-
-                    youtube.com/@sehgal_sheet_tricks3306
-
-                </a>
-
-            </p>
-
-        </section>
-
-    </div>
+    </section>
 
 
     <!-- =========================
-         PDF SCRIPT
+         RESUME
     ========================== -->
 
-    <script>
+    <section id="resume">
 
-        document
-            .getElementById('generatePdfBtn')
-            .addEventListener('click', function () {
+        <h2>Resume</h2>
 
-                const btn = this;
+        <div class="resume-download-buttons">
 
-                const loader =
-                    document.getElementById('pdfLoader');
-
-                const btnText =
-                    document.getElementById('pdfBtnText');
-
-                loader.style.display = 'inline-block';
-
-                btnText.innerText =
-                    'Generating PDF...';
-
-                btn.disabled = true;
+            <a
+                href="https://drive.google.com/file/d/193gyrRHYt46UxRa-VDKIg70doUAoBYPn/view?usp=sharing"
+                class="download-btn"
+                target="_blank"
+            >
+                Download Resume
+            </a>
 
 
-                const element =
-                    document.getElementById('portfolio-body');
+            <button id="generatePdfBtn" class="download-btn">
 
-                const buttonsDiv =
-                    document.querySelector(
-                        '.resume-download-buttons'
+                <span class="loader" id="pdfLoader"></span>
+
+                <span id="pdfBtnText">
+                    Download Profile
+                </span>
+
+            </button>
+
+        </div>
+
+
+        <div class="resume-section">
+
+            <h3>Professional Summary</h3>
+
+            <p>
+                Business Automation and MIS professional focused on
+                designing practical systems that improve operational
+                efficiency, reporting, visibility and accountability.
+                Experienced with Google Sheets, Apps Script, Excel,
+                dashboards, workflow automation and business process
+                systems, with expanding expertise in Python, SQL,
+                API integration, AI automation and application deployment.
+            </p>
+
+        </div>
+
+
+        <div class="resume-section">
+
+            <h3>Work Experience</h3>
+
+
+            <div class="resume-item">
+
+                <h4>MIS Officer</h4>
+
+                <p class="subtitle">
+                    Hosexpert | 21/01/2025 – Present
+                </p>
+
+                <ul>
+
+                    <li>
+                        Leading automation and MIS system deployment
+                        for field operations and process management.
+                    </li>
+
+                    <li>
+                        Developed integrated dashboards, WhatsApp
+                        automation and client onboarding workflows.
+                    </li>
+
+                    <li>
+                        Worked with stakeholders to build scalable
+                        solutions for service and reporting requirements.
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="resume-item">
+
+                <h4>Automation & MIS Consultant</h4>
+
+                <p class="subtitle">
+                    Freelance / Contract | 11/03/2024 – 20/01/2025
+                </p>
+
+                <ul>
+
+                    <li>
+                        Worked with multiple companies to design
+                        customized operational automation systems.
+                    </li>
+
+                    <li>
+                        Designed and deployed Project Management
+                        Systems for manufacturing clients.
+                    </li>
+
+                    <li>
+                        Automated task assignment, progress tracking
+                        and reporting workflows.
+                    </li>
+
+                    <li>
+                        Developed a Doer Scoring Management System
+                        incorporating photo and location capture.
+                    </li>
+
+                    <li>
+                        Automated sales reporting including NBD and CRR
+                        workflows.
+                    </li>
+
+                    <li>
+                        Implemented WhatsApp and Email automation
+                        solutions.
+                    </li>
+
+                    <li>
+                        Created dynamic dashboards using Looker Studio.
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="resume-item">
+
+                <h4>MIS Officer</h4>
+
+                <p class="subtitle">
+                    Corporate Incentive Solutions Pvt. Ltd.
+                    | 16/01/2023 – 10/03/2024
+                </p>
+
+                <ul>
+
+                    <li>
+                        Created and maintained Google Sheets-based
+                        business panels.
+                    </li>
+
+                    <li>
+                        Automated reporting and data management processes.
+                    </li>
+
+                    <li>
+                        Created client leaderboards and reporting systems.
+                    </li>
+
+                    <li>
+                        Managed application check-in reports.
+                    </li>
+
+                    <li>
+                        Managed bulk email and WhatsApp communication
+                        workflows.
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="resume-item">
+
+                <h4>MIS Officer</h4>
+
+                <p class="subtitle">
+                    Fujiyama Power System Pvt. Ltd. (UTL)
+                    | 16/08/2021 – 15/01/2023
+                </p>
+
+                <ul>
+
+                    <li>
+                        Created process-based flowcharts and monitoring systems.
+                    </li>
+
+                    <li>
+                        Monitored, controlled and validated employee processes.
+                    </li>
+
+                    <li>
+                        Created daily task and reporting systems.
+                    </li>
+
+                    <li>
+                        Built KPI/KRA-based employee performance reporting.
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="resume-item">
+
+                <h4>Freelancer Process Specialist</h4>
+
+                <p class="subtitle">
+                    Authridge Research Service Pvt. Ltd.
+                    | March 2019 – April 2020
+                </p>
+
+                <ul>
+
+                    <li>
+                        Worked as a freelance process specialist for
+                        a background verification service provider.
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="resume-item">
+
+                <h4>Market Research and Processing Associate</h4>
+
+                <p class="subtitle">
+                    Ocrex Enterprises Pvt. Ltd.
+                    | Oct 2015 – August 2018
+                </p>
+
+                <ul>
+
+                    <li>
+                        Worked with a company developing automated
+                        bank reconciliation technology from paper
+                        bank statements.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="resume-section">
+
+            <h3>Education</h3>
+
+
+            <div class="resume-item">
+
+                <h4>MBA</h4>
+
+                <p class="subtitle">
+                    Punjab Technical University | 2013
+                </p>
+
+                <ul>
+                    <li>Grades: 70%</li>
+                </ul>
+
+            </div>
+
+
+            <div class="resume-item">
+
+                <h4>B.Com</h4>
+
+                <p class="subtitle">
+                    DAV College Sector 10 Chandigarh | 2011
+                </p>
+
+                <ul>
+                    <li>Grades: 963/1800</li>
+                </ul>
+
+            </div>
+
+
+            <div class="resume-item">
+
+                <h4>12th Grade</h4>
+
+                <p class="subtitle">
+                    DAV School Chandigarh | 2008
+                </p>
+
+                <ul>
+                    <li>Grades: 60%</li>
+                </ul>
+
+            </div>
+
+
+            <div class="resume-item">
+
+                <h4>10th Grade</h4>
+
+                <p class="subtitle">
+                    Mount Carmel School Chandigarh | 2005
+                </p>
+
+                <ul>
+                    <li>Grades: 67%</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="resume-section">
+
+            <h3>Technical Skills</h3>
+
+            <p>
+                AI Automation, AI Integrations, Python, SQL, Google Apps Script,
+                Google Sheets, Excel, API Integration, Workflow Automation,
+                HTML, CSS, JavaScript, Web Applications, Business Portals,
+                Power BI, Looker Studio, AppSheet, GitHub, Git, Render,
+                Email Automation, WhatsApp Automation, MIS Reporting,
+                Data Analysis, Process Optimization, KPI/KRA Systems,
+                CRM Management, Project Management, FMS, PMS, NBD,
+                CRR, Google Forms, HTML Forms, Dashboard Development,
+                Reporting Automation, SAP FICO Knowledge, Accounting Knowledge,
+                Problem Solving and Business Process Design.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACT
+    ========================== -->
+
+    <section id="contact">
+
+        <h2>Contact</h2>
+
+        <p>
+            I'm open to opportunities involving
+            <strong>AI automation, business automation,
+            MIS transformation, workflow systems and
+            process digitization.</strong>
+        </p>
+
+        <p>
+            Email:
+            <a href="mailto:himanshusehgal320@gmail.com">
+                himanshusehgal320@gmail.com
+            </a>
+        </p>
+
+        <p>
+            Phone:
+            +918569890156
+        </p>
+
+        <p>
+            LinkedIn:
+            <a
+                href="https://www.linkedin.com/in/himanshu-s-585a0a201"
+                target="_blank"
+            >
+                linkedin.com/in/himanshu-s-585a0a201
+            </a>
+        </p>
+
+        <p>
+            GitHub:
+            <a
+                href="https://github.com/"
+                target="_blank"
+            >
+                GitHub Profile
+            </a>
+        </p>
+
+        <p>
+            YouTube:
+            <a
+                href="https://www.youtube.com/@sehgal_sheet_tricks3306"
+                target="_blank"
+            >
+                youtube.com/@sehgal_sheet_tricks3306
+            </a>
+        </p>
+
+    </section>
+
+
+    <div class="footer-note">
+        Himanshu Sehgal | AI Automation & Business Systems Developer
+    </div>
+
+</div>
+
+
+<!-- =========================
+     PDF GENERATION
+========================== -->
+
+<script>
+
+    document
+        .getElementById('generatePdfBtn')
+        .addEventListener('click', function () {
+
+            const btn = this;
+
+            const loader =
+                document.getElementById('pdfLoader');
+
+            const btnText =
+                document.getElementById('pdfBtnText');
+
+            loader.style.display = 'inline-block';
+
+            btnText.innerText =
+                'Generating PDF...';
+
+            btn.disabled = true;
+
+
+            const element =
+                document.getElementById('portfolio-body');
+
+
+            const buttonsDiv =
+                document.querySelector(
+                    '.resume-download-buttons'
+                );
+
+
+            buttonsDiv.style.display = 'none';
+
+
+            const opt = {
+
+                margin: [0.2, 0.2, 0.2, 0.2],
+
+                filename:
+                    'Himanshu_Sehgal_AI_Automation_Profile.pdf',
+
+                image: {
+                    type: 'jpeg',
+                    quality: 0.98
+                },
+
+                html2canvas: {
+                    scale: 2,
+                    useCORS: true,
+                    logging: false
+                },
+
+                jsPDF: {
+                    unit: 'in',
+                    format: 'a4',
+                    orientation: 'portrait'
+                }
+
+            };
+
+
+            html2pdf()
+                .set(opt)
+                .from(element)
+                .save()
+                .then(() => {
+
+                    loader.style.display = 'none';
+
+                    btnText.innerText =
+                        'Download Profile';
+
+                    btn.disabled = false;
+
+                    buttonsDiv.style.display =
+                        'flex';
+
+                })
+                .catch((err) => {
+
+                    console.error(
+                        'PDF generation failed:',
+                        err
                     );
 
+                    loader.style.display = 'none';
 
-                buttonsDiv.style.display = 'none';
+                    btnText.innerText =
+                        'Error! Try Again';
 
+                    btn.disabled = false;
 
-                const opt = {
+                    buttonsDiv.style.display =
+                        'flex';
 
-                    margin: [
-                        0.2,
-                        0.2,
-                        0.2,
-                        0.2
-                    ],
+                    alert(
+                        'PDF generate karte waqt issue aaya. Please try again.'
+                    );
 
-                    filename:
-                        'Himanshu_Sehgal_Profile.pdf',
+                });
 
-                    image: {
-                        type: 'jpeg',
-                        quality: 0.98
-                    },
+        });
 
-                    html2canvas: {
-                        scale: 2,
-                        useCORS: true
-                    },
-
-                    jsPDF: {
-                        unit: 'in',
-                        format: 'a4',
-                        orientation: 'portrait'
-                    }
-
-                };
-
-
-                html2pdf()
-
-                    .set(opt)
-
-                    .from(element)
-
-                    .save()
-
-                    .then(() => {
-
-                        loader.style.display =
-                            'none';
-
-                        btnText.innerText =
-                            'Download Profile';
-
-                        btn.disabled =
-                            false;
-
-                        buttonsDiv.style.display =
-                            'flex';
-
-                    })
-
-                    .catch((err) => {
-
-                        console.error(
-                            'PDF generation failed:',
-                            err
-                        );
-
-                        loader.style.display =
-                            'none';
-
-                        btnText.innerText =
-                            'Error! Try Again';
-
-                        btn.disabled =
-                            false;
-
-                        buttonsDiv.style.display =
-                            'flex';
-
-                        alert(
-                            'PDF generation mein issue aaya. Please try again.'
-                        );
-
-                    });
-
-            });
-
-    </script>
+</script>
 
 </body>
 </html>
