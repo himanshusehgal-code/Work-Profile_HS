@@ -1,696 +1,646 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Himanshu Sehgal | AI Automation & Business Systems Developer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Himanshu Sehgal - AI Automation & Business Systems Developer Portfolio">
+    <title>Himanshu Sehgal | AI Automation & Business Systems Developer</title>
 
-<!-- Self-contained GitHub Pages build: no third-party runtime assets -->
+    <!-- Self-contained GitHub Pages build: no third-party runtime assets -->
 
-<style>
-
-    :root {
-        --bg: #0f172a;
-        --sidebar-bg: #1e293b;
-        --accent: #00bcd4;
-        --text-light: #e2e8f0;
-        --text-muted: #94a3b8;
-        --card-shadow: rgba(0,0,0,0.3);
-        --project-detail-bg: #2a384b;
-        --button-hover: #0097a7;
-        --success: #22c55e;
-    }
-
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    html {
-        scroll-behavior: smooth;
-    }
-
-    body {
-        font-family: Arial, Helvetica, sans-serif;
-        background: var(--bg);
-        color: var(--text-light);
-        display: flex;
-        min-height: 100vh;
-        line-height: 1.6;
-        overflow-x: hidden;
-    }
-
-    /* =========================
-       SIDEBAR
-    ========================== */
-
-    .sidebar {
-        background: var(--sidebar-bg);
-        width: 280px;
-        padding: 2.5rem 1.5rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        position: sticky;
-        top: 0;
-        height: 100vh;
-        box-shadow: 2px 0 10px var(--card-shadow);
-        flex-shrink: 0;
-        z-index: 100;
-    }
-
-    .profile-img {
-        width: 140px;
-        height: 140px;
-        border-radius: 50%;
-        border: 4px solid var(--accent);
-        object-fit: cover;
-        margin-bottom: 1.5rem;
-        box-shadow: 0 0 15px rgba(0, 188, 212, 0.5);
-        transition: transform 0.3s ease;
-    }
-
-    .profile-img:hover {
-        transform: scale(1.05);
-    }
-
-    .profile-avatar {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: var(--accent);
-        color: var(--bg);
-        font-size: 2.6rem;
-        font-weight: 900;
-        user-select: none;
-    }
-
-    .sidebar h2 {
-        font-size: 1.6rem;
-        margin-bottom: 2rem;
-        color: var(--accent);
-        text-align: center;
-        letter-spacing: 0.05em;
-        font-weight: 700;
-    }
-
-    .sidebar nav {
-        width: 100%;
-        margin-top: 1rem;
-    }
-
-    .sidebar nav a {
-        color: var(--text-light);
-        text-decoration: none;
-        margin: 0.75rem 0;
-        padding: 0.85rem 1.2rem;
-        border-radius: 8px;
-        width: 100%;
-        text-align: center;
-        display: block;
-        transition: all 0.3s ease;
-        font-weight: 400;
-        font-size: 1.05rem;
-    }
-
-    .sidebar nav a:hover,
-    .sidebar nav a.active {
-        background: var(--accent);
-        color: var(--bg);
-        transform: translateX(5px);
-        box-shadow: 0 4px 10px rgba(0, 188, 212, 0.4);
-    }
-
-    /* =========================
-       MAIN
-    ========================== */
-
-    .main {
-        flex-grow: 1;
-        padding: 3rem 2rem;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    section {
-        margin: 0 auto 3.2rem auto;
-        padding-bottom: 1.8rem;
-        border-bottom: 1px dashed var(--text-muted);
-        max-width: 950px;
-    }
-
-    section:last-of-type {
-        border-bottom: none;
-    }
-
-    section h2 {
-        font-size: 2.3rem;
-        border-bottom: 3px solid var(--accent);
-        padding-bottom: 0.6rem;
-        margin-bottom: 2.2rem;
-        color: var(--accent);
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-    }
-
-    /* =========================
-       HERO
-    ========================== */
-
-    .hero {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 4.5rem;
-        margin-top: 1.5rem;
-    }
-
-    .hero-name {
-        font-size: 2.5rem;
-        color: var(--accent);
-        font-weight: 900;
-        margin-bottom: 0.7rem;
-        text-align: center;
-        letter-spacing: 1px;
-        max-width: 950px;
-    }
-
-    .hero-subtitle {
-        color: var(--text-light);
-        text-align: center;
-        font-size: 1.25rem;
-        max-width: 850px;
-        margin-bottom: 1.5rem;
-    }
-
-    .hero-tagline {
-        color: var(--text-muted);
-        text-align: center;
-        font-size: 1.05rem;
-        max-width: 800px;
-        margin-bottom: 2.5rem;
-    }
-
-    .hero-cards-row {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 1.2rem;
-    }
-
-    .hero-card {
-        background-color: var(--sidebar-bg);
-        width: 180px;
-        height: 195px;
-        border-radius: 17px;
-        box-shadow: 0 8px 25px var(--card-shadow);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        color: var(--text-light);
-        position: relative;
-        transform-style: preserve-3d;
-        transition: transform 0.6s ease;
-    }
-
-    .hero-card:hover {
-        transform: rotateY(180deg);
-    }
-
-    .hero-card-front,
-    .hero-card-back {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        backface-visibility: hidden;
-        border-radius: inherit;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 1rem;
-    }
-
-    .hero-card-back {
-        background-color: var(--accent);
-        color: var(--bg);
-        transform: rotateY(180deg);
-    }
-
-    .hero-card h3 {
-        font-size: 1.08rem;
-        margin-bottom: 0.5rem;
-    }
-
-    .hero-card p {
-        font-size: 0.85rem;
-        color: var(--text-muted);
-    }
-
-    .hero-card-back p {
-        color: var(--bg);
-    }
-
-    /* =========================
-       ABOUT
-    ========================== */
-
-    #about p {
-        font-size: 1.12rem;
-        color: var(--text-light);
-        margin-bottom: 1.2rem;
-    }
-
-    .highlight-box {
-        background: var(--sidebar-bg);
-        border-left: 4px solid var(--accent);
-        padding: 1.4rem;
-        border-radius: 10px;
-        margin-top: 1.5rem;
-        box-shadow: 0 4px 12px var(--card-shadow);
-    }
-
-    .highlight-box strong {
-        color: var(--accent);
-    }
-
-    /* =========================
-       SKILLS
-    ========================== */
-
-    #skills .skill-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-        gap: 1.1rem;
-    }
-
-    .skill-item {
-        background: var(--sidebar-bg);
-        padding: 1.15rem;
-        border-radius: 11px;
-        box-shadow: 0 4px 10px var(--card-shadow);
-        text-align: center;
-        font-size: 1rem;
-        font-weight: 500;
-        transition: transform 0.3s ease, background 0.22s;
-        cursor: default;
-    }
-
-    .skill-item:hover {
-        transform: translateY(-5px);
-        background: var(--accent);
-        color: var(--bg);
-    }
-
-    .skill-item.ai {
-        border: 1px solid var(--accent);
-    }
-
-    /* =========================
-       AUTOMATION STACK
-    ========================== */
-
-    .stack-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 1.3rem;
-    }
-
-    .stack-card {
-        background: var(--sidebar-bg);
-        padding: 1.5rem;
-        border-radius: 13px;
-        box-shadow: 0 5px 15px var(--card-shadow);
-        border-top: 3px solid var(--accent);
-    }
-
-    .stack-card h3 {
-        color: var(--accent);
-        margin-bottom: 0.7rem;
-        font-size: 1.15rem;
-    }
-
-    .stack-card p {
-        color: var(--text-muted);
-        font-size: 0.95rem;
-    }
-
-    /* =========================
-       PORTFOLIO
-    ========================== */
-
-    .portfolio-subsection {
-        margin-bottom: 3rem;
-    }
-
-    .portfolio-subsection h3 {
-        font-size: 1.32rem;
-        color: var(--accent);
-        border-bottom: 2px solid var(--accent);
-        padding-bottom: 0.4rem;
-        margin-bottom: 1.5rem;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-    }
-
-    .project-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 1.4rem;
-    }
-
-    .project-card {
-        background: var(--sidebar-bg);
-        padding: 1.5rem;
-        border-radius: 15px;
-        box-shadow: 0 8px 20px var(--card-shadow);
-        transition: transform 0.25s ease, box-shadow 0.25s ease;
-        border-left: 3px solid var(--accent);
-    }
-
-    .project-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 14px 30px var(--card-shadow);
-    }
-
-    .project-card h4 {
-        color: var(--accent);
-        margin-bottom: 0.7rem;
-        font-size: 1.1rem;
-    }
-
-    .project-card p {
-        color: var(--text-muted);
-        font-size: 0.95rem;
-    }
-
-    .tech-tags {
-        margin-top: 1rem;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.4rem;
-    }
-
-    .tech-tag {
-        font-size: 0.75rem;
-        padding: 0.3rem 0.55rem;
-        border-radius: 5px;
-        background: var(--project-detail-bg);
-        color: var(--text-light);
-    }
-
-    /* =========================
-       RESUME BUTTONS
-    ========================== */
-
-    .resume-download-buttons {
-        display: flex;
-        gap: 1.2rem;
-        margin: 2.1rem 0 2.2rem 0;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    .download-btn {
-        background: var(--accent);
-        color: var(--bg);
-        border: none;
-        padding: 0.92rem 2rem;
-        font-size: 1.05rem;
-        border-radius: 8px;
-        font-weight: 700;
-        cursor: pointer;
-        box-shadow: 0 2px 10px var(--card-shadow);
-        transition: background 0.22s, color 0.22s, transform 0.17s;
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        letter-spacing: 0.02em;
-        min-width: 200px;
-    }
-
-    .download-btn:hover {
-        background: var(--button-hover);
-        color: var(--text-light);
-        transform: translateY(-2px) scale(1.03);
-    }
-
-    .loader {
-        border: 3px solid rgba(255,255,255,0.3);
-        border-top: 3px solid var(--bg);
-        border-radius: 50%;
-        width: 20px;
-        height: 20px;
-        animation: spin 1s linear infinite;
-        margin-right: 10px;
-        display: none;
-    }
-
-    @keyframes spin {
-        0% {
-            transform: rotate(0deg);
+    <style>
+        :root {
+            --bg: #0f172a;
+            --sidebar-bg: #1e293b;
+            --accent: #00bcd4;
+            --text-light: #e2e8f0;
+            --text-muted: #94a3b8;
+            --card-shadow: rgba(0,0,0,0.3);
+            --project-detail-bg: #2a384b;
+            --button-hover: #0097a7;
+            --success: #22c55e;
         }
 
-        100% {
-            transform: rotate(360deg);
-        }
-    }
-
-    /* =========================
-       RESUME
-    ========================== */
-
-    .resume-section {
-        background-color: var(--sidebar-bg);
-        padding: 1.5rem;
-        border-radius: 12px;
-        box-shadow: 0 4px 10px var(--card-shadow);
-        margin-bottom: 2.3rem;
-    }
-
-    .resume-section h3 {
-        color: var(--accent);
-        font-size: 1.3rem;
-        margin-bottom: 1rem;
-        border-bottom: 2px solid var(--accent);
-        padding-bottom: 0.4rem;
-    }
-
-    .resume-item {
-        margin-bottom: 1.5rem;
-    }
-
-    .resume-item h4 {
-        font-size: 1.09rem;
-        color: var(--text-light);
-        margin-bottom: 0.2rem;
-    }
-
-    .resume-item p.subtitle {
-        font-size: 0.96rem;
-        color: var(--text-muted);
-        margin-bottom: 0.44rem;
-    }
-
-    .resume-item ul {
-        list-style: disc;
-        padding-left: 1.2rem;
-    }
-
-    .resume-item ul li {
-        margin-bottom: 0.3rem;
-    }
-
-    /* =========================
-       CONTACT
-    ========================== */
-
-    #contact p {
-        font-size: 1.08rem;
-        color: var(--text-light);
-        margin-bottom: 0.88rem;
-    }
-
-    #contact p a {
-        color: var(--accent);
-    }
-
-    #contact p a:hover {
-        color: var(--text-light);
-        text-decoration: underline;
-    }
-
-    /* =========================
-       FOOTER
-    ========================== */
-
-    .footer-note {
-        text-align: center;
-        color: var(--text-muted);
-        font-size: 0.85rem;
-        margin-top: 2rem;
-    }
-
-    /* =========================
-       RESPONSIVE
-    ========================== */
-
-    @media (max-width: 950px) {
-
-        .main {
-            padding: 2rem 1rem;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        .hero-name {
-            font-size: 2rem;
+        html {
+            scroll-behavior: smooth;
         }
-
-        section {
-            max-width: 100%;
-        }
-    }
-
-    @media (max-width: 768px) {
 
         body {
-            flex-direction: column;
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--text-light);
+            display: flex;
+            min-height: 100vh;
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
+        /* =========================
+           SIDEBAR
+        ========================== */
+
         .sidebar {
-            width: 100%;
-            height: auto;
-            flex-direction: row;
-            justify-content: center;
-            padding: 1rem;
-            position: static;
-            box-shadow: 0 2px 10px var(--card-shadow);
+            background: var(--sidebar-bg);
+            width: 280px;
+            padding: 2.5rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            box-shadow: 2px 0 10px var(--card-shadow);
+            flex-shrink: 0;
+            z-index: 100;
         }
 
         .profile-img {
-            width: 70px;
-            height: 70px;
-            margin-bottom: 0;
-            margin-right: 1rem;
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 4px solid var(--accent);
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 0 15px rgba(0, 188, 212, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+
+        .profile-avatar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent);
+            color: var(--bg);
+            font-size: 2.6rem;
+            font-weight: 900;
+            user-select: none;
         }
 
         .sidebar h2 {
-            display: none;
-        }
-
-        .sidebar nav {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 0;
-        }
-
-        .sidebar nav a {
-            margin: 0.25rem;
-            padding: 0.55rem 0.7rem;
-            font-size: 0.82rem;
-        }
-
-        .main {
-            padding: 1.5rem 0.8rem;
-        }
-
-        .hero {
-            margin-top: 1rem;
-        }
-
-        .hero-name {
-            font-size: 1.7rem;
-        }
-
-        .hero-subtitle {
-            font-size: 1.05rem;
-        }
-
-        .hero-cards-row {
-            gap: 0.8rem;
-        }
-
-        .hero-card {
-            width: 155px;
-            height: 170px;
-        }
-
-        section h2 {
-            font-size: 1.8rem;
-        }
-
-        #skills .skill-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-
-        .project-grid {
-            grid-template-columns: 1fr;
-        }
-    }
-
-    @media (max-width: 480px) {
-
-        .sidebar {
-            flex-direction: column;
-        }
-
-        .profile-img {
-            margin-right: 0;
-            margin-bottom: 0.7rem;
+            font-size: 1.6rem;
+            margin-bottom: 2rem;
+            color: var(--accent);
+            text-align: center;
+            letter-spacing: 0.05em;
+            font-weight: 700;
         }
 
         .sidebar nav {
             width: 100%;
+            margin-top: 1rem;
         }
 
         .sidebar nav a {
-            width: 45%;
+            color: var(--text-light);
+            text-decoration: none;
+            margin: 0.75rem 0;
+            padding: 0.85rem 1.2rem;
+            border-radius: 8px;
+            width: 100%;
+            text-align: center;
+            display: block;
+            transition: all 0.3s ease;
+            font-weight: 400;
+            font-size: 1.05rem;
         }
 
-        .hero-name {
-            font-size: 1.5rem;
+        .sidebar nav a:hover,
+        .sidebar nav a.active {
+            background: var(--accent);
+            color: var(--bg);
+            transform: translateX(5px);
+            box-shadow: 0 4px 10px rgba(0, 188, 212, 0.4);
         }
 
-        .hero-subtitle {
-            font-size: 0.95rem;
+        /* =========================
+           MAIN
+        ========================== */
+
+        .main {
+            flex-grow: 1;
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .hero-card {
-            width: 44vw;
-            min-width: 135px;
-            height: 155px;
+        section {
+            margin: 0 auto 3.2rem auto;
+            padding-bottom: 1.8rem;
+            border-bottom: 1px dashed var(--text-muted);
+            max-width: 950px;
         }
 
-        #skills .skill-grid {
-            grid-template-columns: 1fr;
+        section:last-of-type {
+            border-bottom: none;
         }
 
         section h2 {
-            font-size: 1.55rem;
+            font-size: 2.3rem;
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 0.6rem;
+            margin-bottom: 2.2rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
         }
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 4.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .hero-name {
+            font-size: 2.5rem;
+            color: var(--accent);
+            font-weight: 900;
+            margin-bottom: 0.7rem;
+            text-align: center;
+            letter-spacing: 1px;
+            max-width: 950px;
+        }
+
+        .hero-subtitle {
+            color: var(--text-light);
+            text-align: center;
+            font-size: 1.25rem;
+            max-width: 850px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-tagline {
+            color: var(--text-muted);
+            text-align: center;
+            font-size: 1.05rem;
+            max-width: 800px;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-cards-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.2rem;
+        }
+
+        .hero-card {
+            background-color: var(--sidebar-bg);
+            width: 180px;
+            height: 195px;
+            border-radius: 17px;
+            box-shadow: 0 8px 25px var(--card-shadow);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--text-light);
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s ease;
+        }
+
+        .hero-card:hover {
+            transform: rotateY(180deg);
+        }
+
+        .hero-card-front,
+        .hero-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: inherit;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .hero-card-back {
+            background-color: var(--accent);
+            color: var(--bg);
+            transform: rotateY(180deg);
+        }
+
+        .hero-card h3 {
+            font-size: 1.08rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .hero-card-back p {
+            color: var(--bg);
+        }
+
+        /* =========================
+           ABOUT
+        ========================== */
 
         #about p {
-            font-size: 1rem;
+            font-size: 1.12rem;
+            color: var(--text-light);
+            margin-bottom: 1.2rem;
         }
-    }
 
-</style>
+        .highlight-box {
+            background: var(--sidebar-bg);
+            border-left: 4px solid var(--accent);
+            padding: 1.4rem;
+            border-radius: 10px;
+            margin-top: 1.5rem;
+            box-shadow: 0 4px 12px var(--card-shadow);
+        }
 
-</head><body id="portfolio-body"><!-- =========================
+        .highlight-box strong {
+            color: var(--accent);
+        }
+
+        /* =========================
+           SKILLS
+        ========================== */
+
+        #skills .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 1.1rem;
+        }
+
+        .skill-item {
+            background: var(--sidebar-bg);
+            padding: 1.15rem;
+            border-radius: 11px;
+            box-shadow: 0 4px 10px var(--card-shadow);
+            text-align: center;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: transform 0.3s ease, background 0.22s;
+            cursor: default;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            background: var(--accent);
+            color: var(--bg);
+        }
+
+        .skill-item.ai {
+            border: 1px solid var(--accent);
+        }
+
+        /* =========================
+           AUTOMATION STACK
+        ========================== */
+
+        .stack-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.3rem;
+        }
+
+        .stack-card {
+            background: var(--sidebar-bg);
+            padding: 1.5rem;
+            border-radius: 13px;
+            box-shadow: 0 5px 15px var(--card-shadow);
+            border-top: 3px solid var(--accent);
+        }
+
+        .stack-card h3 {
+            color: var(--accent);
+            margin-bottom: 0.7rem;
+            font-size: 1.15rem;
+        }
+
+        .stack-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* =========================
+           PORTFOLIO
+        ========================== */
+
+        .portfolio-subsection {
+            margin-bottom: 3rem;
+        }
+
+        .portfolio-subsection h3 {
+            font-size: 1.32rem;
+            color: var(--accent);
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 0.4rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.4rem;
+        }
+
+        .project-card {
+            background: var(--sidebar-bg);
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px var(--card-shadow);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            border-left: 3px solid var(--accent);
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 30px var(--card-shadow);
+        }
+
+        .project-card h4 {
+            color: var(--accent);
+            margin-bottom: 0.7rem;
+            font-size: 1.1rem;
+        }
+
+        .project-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .tech-tags {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .tech-tag {
+            font-size: 0.75rem;
+            padding: 0.3rem 0.55rem;
+            border-radius: 5px;
+            background: var(--project-detail-bg);
+            color: var(--text-light);
+        }
+
+        /* =========================
+           RESUME BUTTONS
+        ========================== */
+
+        .resume-download-buttons {
+            display: flex;
+            gap: 1.2rem;
+            margin: 2.1rem 0 2.2rem 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .download-btn {
+            background: var(--accent);
+            color: var(--bg);
+            border: none;
+            padding: 0.92rem 2rem;
+            font-size: 1.05rem;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 2px 10px var(--card-shadow);
+            transition: background 0.22s, color 0.22s, transform 0.17s;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            letter-spacing: 0.02em;
+            min-width: 200px;
+        }
+
+        .download-btn:hover {
+            background: var(--button-hover);
+            color: var(--text-light);
+            transform: translateY(-2px) scale(1.03);
+        }
+
+        /* =========================
+           RESUME
+        ========================== */
+
+        .resume-section {
+            background-color: var(--sidebar-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px var(--card-shadow);
+            margin-bottom: 2.3rem;
+        }
+
+        .resume-section h3 {
+            color: var(--accent);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 0.4rem;
+        }
+
+        .resume-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .resume-item h4 {
+            font-size: 1.09rem;
+            color: var(--text-light);
+            margin-bottom: 0.2rem;
+        }
+
+        .resume-item p.subtitle {
+            font-size: 0.96rem;
+            color: var(--text-muted);
+            margin-bottom: 0.44rem;
+        }
+
+        .resume-item ul {
+            list-style: disc;
+            padding-left: 1.2rem;
+        }
+
+        .resume-item ul li {
+            margin-bottom: 0.3rem;
+        }
+
+        /* =========================
+           CONTACT
+        ========================== */
+
+        #contact p {
+            font-size: 1.08rem;
+            color: var(--text-light);
+            margin-bottom: 0.88rem;
+        }
+
+        #contact p a {
+            color: var(--accent);
+        }
+
+        #contact p a:hover {
+            color: var(--text-light);
+            text-decoration: underline;
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        .footer-note {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 2rem;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media (max-width: 950px) {
+            .main {
+                padding: 2rem 1rem;
+            }
+            .hero-name {
+                font-size: 2rem;
+            }
+            section {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                height: auto;
+                flex-direction: row;
+                justify-content: center;
+                padding: 1rem;
+                position: static;
+                box-shadow: 0 2px 10px var(--card-shadow);
+            }
+            .profile-img {
+                width: 70px;
+                height: 70px;
+                margin-bottom: 0;
+                margin-right: 1rem;
+            }
+            .sidebar h2 {
+                display: none;
+            }
+            .sidebar nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                margin-top: 0;
+            }
+            .sidebar nav a {
+                margin: 0.25rem;
+                padding: 0.55rem 0.7rem;
+                font-size: 0.82rem;
+            }
+            .main {
+                padding: 1.5rem 0.8rem;
+            }
+            .hero {
+                margin-top: 1rem;
+            }
+            .hero-name {
+                font-size: 1.7rem;
+            }
+            .hero-subtitle {
+                font-size: 1.05rem;
+            }
+            .hero-cards-row {
+                gap: 0.8rem;
+            }
+            .hero-card {
+                width: 155px;
+                height: 170px;
+            }
+            section h2 {
+                font-size: 1.8rem;
+            }
+            #skills .skill-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sidebar {
+                flex-direction: column;
+            }
+            .profile-img {
+                margin-right: 0;
+                margin-bottom: 0.7rem;
+            }
+            .sidebar nav {
+                width: 100%;
+            }
+            .sidebar nav a {
+                width: 45%;
+            }
+            .hero-name {
+                font-size: 1.5rem;
+            }
+            .hero-subtitle {
+                font-size: 0.95rem;
+            }
+            .hero-card {
+                width: 44vw;
+                min-width: 135px;
+                height: 155px;
+            }
+            #skills .skill-grid {
+                grid-template-columns: 1fr;
+            }
+            section h2 {
+                font-size: 1.55rem;
+            }
+            #about p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body id="portfolio-body">
+
+<!-- =========================
      SIDEBAR
 ========================== -->
-
 <div class="sidebar">
-
     <div class="profile-img profile-avatar" role="img" aria-label="Himanshu Sehgal profile">
         HS
     </div>
-
     <h2>Himanshu Sehgal</h2>
-
     <nav>
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
@@ -699,35 +649,27 @@
         <a href="#resume">Resume</a>
         <a href="#contact">Contact</a>
     </nav>
-
 </div>
-
 
 <div class="main">
 
     <!-- =========================
          HERO
     ========================== -->
-
     <div class="hero">
-
         <h1 class="hero-name">
             Himanshu Sehgal
         </h1>
-
         <div class="hero-subtitle">
             <strong>AI Automation & Business Systems Developer</strong>
         </div>
-
         <div class="hero-tagline">
             Building practical business automation systems using
             Google Workspace, Apps Script, Python, SQL, APIs, AI and
             modern web technologies.
         </div>
 
-
         <div class="hero-cards-row">
-
             <div class="hero-card">
                 <div class="hero-card-front">
                     <h3>AI Automation</h3>
@@ -738,7 +680,6 @@
                     <p>Practical Automation</p>
                 </div>
             </div>
-
 
             <div class="hero-card">
                 <div class="hero-card-front">
@@ -751,7 +692,6 @@
                 </div>
             </div>
 
-
             <div class="hero-card">
                 <div class="hero-card-front">
                     <h3>SQL</h3>
@@ -762,7 +702,6 @@
                     <p>Business Data</p>
                 </div>
             </div>
-
 
             <div class="hero-card">
                 <div class="hero-card-front">
@@ -775,7 +714,6 @@
                 </div>
             </div>
 
-
             <div class="hero-card">
                 <div class="hero-card-front">
                     <h3>Google Sheets</h3>
@@ -786,7 +724,6 @@
                     <p>Automated Reporting</p>
                 </div>
             </div>
-
 
             <div class="hero-card">
                 <div class="hero-card-front">
@@ -799,7 +736,6 @@
                 </div>
             </div>
 
-
             <div class="hero-card">
                 <div class="hero-card-front">
                     <h3>Web Apps</h3>
@@ -810,7 +746,6 @@
                     <p>Frontend + Backend</p>
                 </div>
             </div>
-
 
             <div class="hero-card">
                 <div class="hero-card-front">
@@ -823,7 +758,6 @@
                 </div>
             </div>
 
-
             <div class="hero-card">
                 <div class="hero-card-front">
                     <h3>Render</h3>
@@ -834,7 +768,6 @@
                     <p>Live Applications</p>
                 </div>
             </div>
-
 
             <div class="hero-card">
                 <div class="hero-card-front">
@@ -847,7 +780,6 @@
                 </div>
             </div>
 
-
             <div class="hero-card">
                 <div class="hero-card-front">
                     <h3>Looker Studio</h3>
@@ -859,7 +791,6 @@
                 </div>
             </div>
 
-
             <div class="hero-card">
                 <div class="hero-card-front">
                     <h3>AppSheet</h3>
@@ -870,31 +801,23 @@
                     <p>Business Apps</p>
                 </div>
             </div>
-
         </div>
-
     </div>
-
 
     <!-- =========================
          ABOUT
     ========================== -->
-
     <section id="about">
-
         <h2>About</h2>
-
         <p>
             I specialize in building practical business automation systems
             that connect people, processes, data and technology.
         </p>
-
         <p>
             My core experience includes Google Sheets, Excel, Google Apps Script,
             workflow automation, dashboards, SQL, Python, APIs and business
             applications.
         </p>
-
         <p>
             I work at the intersection of <strong>business operations,
             MIS, automation and technology</strong> — understanding the
@@ -902,768 +825,299 @@
             reduces repetitive work, improves visibility and helps management
             make better decisions.
         </p>
-
         <p>
             My current focus is expanding this capability into
             <strong>AI-powered business automation</strong>, where AI is
             integrated directly into applications and workflows rather than
             being treated as a standalone chatbot.
         </p>
-
-
         <div class="highlight-box">
-
             <strong>My approach:</strong>
-
-            Business Problem → Data → Process → Automation → AI → API Integration
-            → Deployment → Monitoring
-
+            Business Problem → Data → Process → Automation → AI → API Integration → Deployment → Monitoring
         </div>
-
     </section>
-
 
     <!-- =========================
          SKILLS
     ========================== -->
-
     <section id="skills">
-
         <h2>Skills</h2>
-
         <div class="skill-grid">
-
-            <div class="skill-item ai">
-                AI Automation & AI Integrations
-            </div>
-
-            <div class="skill-item">
-                Python Automation
-            </div>
-
-            <div class="skill-item">
-                SQL & Database Operations
-            </div>
-
-            <div class="skill-item">
-                Advanced Google Sheets
-            </div>
-
-            <div class="skill-item">
-                Advanced Excel
-            </div>
-
-            <div class="skill-item">
-                Google Apps Script
-            </div>
-
-            <div class="skill-item">
-                API Integration
-            </div>
-
-            <div class="skill-item">
-                Workflow Automation
-            </div>
-
-            <div class="skill-item">
-                HTML / CSS / JavaScript
-            </div>
-
-            <div class="skill-item">
-                Web Applications
-            </div>
-
-            <div class="skill-item">
-                Business Portals
-            </div>
-
-            <div class="skill-item">
-                Chatbots
-            </div>
-
-            <div class="skill-item">
-                Power BI
-            </div>
-
-            <div class="skill-item">
-                Looker Studio
-            </div>
-
-            <div class="skill-item">
-                AppSheet
-            </div>
-
-            <div class="skill-item">
-                GitHub
-            </div>
-
-            <div class="skill-item">
-                Render Deployment
-            </div>
-
-            <div class="skill-item">
-                Email Automation
-            </div>
-
-            <div class="skill-item">
-                WhatsApp Automation
-            </div>
-
-            <div class="skill-item">
-                MIS & Reporting
-            </div>
-
-            <div class="skill-item">
-                Process Optimization
-            </div>
-
-            <div class="skill-item">
-                KPI / KRA Systems
-            </div>
-
+            <div class="skill-item ai">AI Automation & AI Integrations</div>
+            <div class="skill-item">Python Automation</div>
+            <div class="skill-item">SQL & Database Operations</div>
+            <div class="skill-item">Advanced Google Sheets</div>
+            <div class="skill-item">Advanced Excel</div>
+            <div class="skill-item">Google Apps Script</div>
+            <div class="skill-item">API Integration</div>
+            <div class="skill-item">Workflow Automation</div>
+            <div class="skill-item">HTML / CSS / JavaScript</div>
+            <div class="skill-item">Web Applications</div>
+            <div class="skill-item">Business Portals</div>
+            <div class="skill-item">Chatbots</div>
+            <div class="skill-item">Power BI</div>
+            <div class="skill-item">Looker Studio</div>
+            <div class="skill-item">AppSheet</div>
+            <div class="skill-item">GitHub</div>
+            <div class="skill-item">Render Deployment</div>
+            <div class="skill-item">Email Automation</div>
+            <div class="skill-item">WhatsApp Automation</div>
+            <div class="skill-item">MIS & Reporting</div>
+            <div class="skill-item">Process Optimization</div>
+            <div class="skill-item">KPI / KRA Systems</div>
         </div>
-
     </section>
-
 
     <!-- =========================
          AI AUTOMATION STACK
     ========================== -->
-
     <section id="automation">
-
         <h2>AI Automation</h2>
-
         <div class="stack-grid">
-
             <div class="stack-card">
                 <h3>AI Integration</h3>
-                <p>
-                    Integrating AI capabilities directly into business
-                    applications, workflows, dashboards and internal tools.
-                </p>
+                <p>Integrating AI capabilities directly into business applications, workflows, dashboards and internal tools.</p>
             </div>
-
-
             <div class="stack-card">
                 <h3>Python Automation</h3>
-                <p>
-                    Using Python to process data, automate repetitive
-                    operations, build backend logic and connect external systems.
-                </p>
+                <p>Using Python to process data, automate repetitive operations, build backend logic and connect external systems.</p>
             </div>
-
-
             <div class="stack-card">
                 <h3>API Integration</h3>
-                <p>
-                    Connecting business systems through APIs instead of
-                    relying only on manual copy-paste workflows.
-                </p>
+                <p>Connecting business systems through APIs instead of relying only on manual copy-paste workflows.</p>
             </div>
-
-
             <div class="stack-card">
                 <h3>Google Workspace</h3>
-                <p>
-                    Building automated workflows around Sheets, Forms,
-                    Drive, Gmail and Apps Script.
-                </p>
+                <p>Building automated workflows around Sheets, Forms, Drive, Gmail and Apps Script.</p>
             </div>
-
-
             <div class="stack-card">
                 <h3>Business Applications</h3>
-                <p>
-                    Developing custom portals, forms, dashboards and
-                    workflow systems around real operational requirements.
-                </p>
+                <p>Developing custom portals, forms, dashboards and workflow systems around real operational requirements.</p>
             </div>
-
-
             <div class="stack-card">
                 <h3>Deployment</h3>
-                <p>
-                    Using GitHub for source management and Render for
-                    deploying live applications and backend services.
-                </p>
+                <p>Using GitHub for source management and Render for deploying live applications and backend services.</p>
             </div>
-
         </div>
-
     </section>
-
 
     <!-- =========================
          PORTFOLIO
     ========================== -->
-
     <section id="portfolio">
-
         <h2>Portfolio</h2>
-
-
         <div class="portfolio-subsection">
-
             <h3>Business Automation Systems</h3>
-
             <div class="project-grid">
-
-
                 <div class="project-card">
-
                     <h4>Business Workflow Automation</h4>
-
-                    <p>
-                        Designed workflow systems to manage tasks,
-                        assignments, follow-ups, reporting and operational
-                        visibility.
-                    </p>
-
+                    <p>Designed workflow systems to manage tasks, assignments, follow-ups, reporting and operational visibility.</p>
                     <div class="tech-tags">
                         <span class="tech-tag">Google Sheets</span>
                         <span class="tech-tag">Apps Script</span>
                         <span class="tech-tag">Automation</span>
                     </div>
-
                 </div>
-
-
                 <div class="project-card">
-
                     <h4>AI-Powered Business Automation</h4>
-
-                    <p>
-                        Developing the capability to integrate AI into
-                        business workflows for classification, extraction,
-                        summarization, decision support and automation.
-                    </p>
-
+                    <p>Developing the capability to integrate AI into business workflows for classification, extraction, summarization, decision support and automation.</p>
                     <div class="tech-tags">
                         <span class="tech-tag">AI</span>
                         <span class="tech-tag">Python</span>
                         <span class="tech-tag">API</span>
                     </div>
-
                 </div>
-
-
                 <div class="project-card">
-
                     <h4>Management Information Systems</h4>
-
-                    <p>
-                        Built automated MIS systems for reporting,
-                        monitoring, employee performance, KPIs and
-                        management visibility.
-                    </p>
-
+                    <p>Built automated MIS systems for reporting, monitoring, employee performance, KPIs and management visibility.</p>
                     <div class="tech-tags">
                         <span class="tech-tag">MIS</span>
                         <span class="tech-tag">SQL</span>
                         <span class="tech-tag">Dashboards</span>
                     </div>
-
                 </div>
-
-
                 <div class="project-card">
-
                     <h4>Custom Web Portals</h4>
-
-                    <p>
-                        Developed custom business portals and web
-                        applications for internal operations and
-                        management workflows.
-                    </p>
-
+                    <p>Developed custom business portals and web applications for internal operations and management workflows.</p>
                     <div class="tech-tags">
                         <span class="tech-tag">HTML</span>
                         <span class="tech-tag">CSS</span>
                         <span class="tech-tag">JavaScript</span>
                     </div>
-
                 </div>
-
-
                 <div class="project-card">
-
                     <h4>Reporting Automation</h4>
-
-                    <p>
-                        Automated recurring reports, data preparation,
-                        validation and management reporting processes.
-                    </p>
-
+                    <p>Automated recurring reports, data preparation, validation and management reporting processes.</p>
                     <div class="tech-tags">
                         <span class="tech-tag">Excel</span>
                         <span class="tech-tag">Sheets</span>
                         <span class="tech-tag">Python</span>
                     </div>
-
                 </div>
-
-
                 <div class="project-card">
-
                     <h4>Communication Automation</h4>
-
-                    <p>
-                        Built automated email and WhatsApp workflows for
-                        alerts, follow-ups, reporting and operational
-                        communication.
-                    </p>
-
+                    <p>Built automated email and WhatsApp workflows for alerts, follow-ups, reporting and operational communication.</p>
                     <div class="tech-tags">
                         <span class="tech-tag">API</span>
                         <span class="tech-tag">Email</span>
                         <span class="tech-tag">WhatsApp</span>
                     </div>
-
                 </div>
-
-
                 <div class="project-card">
-
                     <h4>GitHub Development Workflow</h4>
-
-                    <p>
-                        Maintaining application source code, changes and
-                        development versions through GitHub-based workflows.
-                    </p>
-
+                    <p>Maintaining application source code, changes and development versions through GitHub-based workflows.</p>
                     <div class="tech-tags">
                         <span class="tech-tag">GitHub</span>
                         <span class="tech-tag">Git</span>
                         <span class="tech-tag">Version Control</span>
                     </div>
-
                 </div>
-
-
                 <div class="project-card">
-
                     <h4>Cloud Application Deployment</h4>
-
-                    <p>
-                        Building deployment capability for Python and web
-                        applications using GitHub-connected cloud hosting
-                        environments such as Render.
-                    </p>
-
+                    <p>Building deployment capability for Python and web applications using GitHub-connected cloud hosting environments such as Render.</p>
                     <div class="tech-tags">
                         <span class="tech-tag">Render</span>
                         <span class="tech-tag">Python</span>
                         <span class="tech-tag">Deployment</span>
                     </div>
-
                 </div>
-
             </div>
-
         </div>
-
     </section>
-
 
     <!-- =========================
          RESUME
     ========================== -->
-
     <section id="resume">
-
         <h2>Resume</h2>
-
         <div class="resume-download-buttons">
-
-            <a
-                href="https://drive.google.com/file/d/193gyrRHYt46UxRa-VDKIg70doUAoBYPn/view?usp=sharing"
-                class="download-btn"
-                target="_blank"
-            >
+            <a href="https://drive.google.com/file/d/193gyrRHYt46UxRa-VDKIg70doUAoBYPn/view?usp=sharing" class="download-btn" target="_blank" rel="noopener noreferrer">
                 Download Resume
             </a>
-
-
             <button id="generatePdfBtn" class="download-btn" type="button">
                 Print / Save Profile as PDF
             </button>
-
         </div>
 
-
         <div class="resume-section">
-
             <h3>Professional Summary</h3>
-
             <p>
-                Business Automation and MIS professional focused on
-                designing practical systems that improve operational
-                efficiency, reporting, visibility and accountability.
-                Experienced with Google Sheets, Apps Script, Excel,
-                dashboards, workflow automation and business process
-                systems, with expanding expertise in Python, SQL,
-                API integration, AI automation and application deployment.
+                Business Automation and MIS professional focused on designing practical systems that improve operational efficiency, reporting, visibility and accountability. Experienced with Google Sheets, Apps Script, Excel, dashboards, workflow automation and business process systems, with expanding expertise in Python, SQL, API integration, AI automation and application deployment.
             </p>
-
         </div>
 
-
         <div class="resume-section">
-
             <h3>Work Experience</h3>
-
-
             <div class="resume-item">
-
                 <h4>MIS Officer</h4>
-
-                <p class="subtitle">
-                    Hosexpert | 21/01/2025 – Present
-                </p>
-
+                <p class="subtitle">Hosexpert | 21/01/2025 – Present</p>
                 <ul>
-
-                    <li>
-                        Leading automation and MIS system deployment
-                        for field operations and process management.
-                    </li>
-
-                    <li>
-                        Developed integrated dashboards, WhatsApp
-                        automation and client onboarding workflows.
-                    </li>
-
-                    <li>
-                        Worked with stakeholders to build scalable
-                        solutions for service and reporting requirements.
-                    </li>
-
+                    <li>Leading automation and MIS system deployment for field operations and process management.</li>
+                    <li>Developed integrated dashboards, WhatsApp automation and client onboarding workflows.</li>
+                    <li>Worked with stakeholders to build scalable solutions for service and reporting requirements.</li>
                 </ul>
-
             </div>
-
-
             <div class="resume-item">
-
                 <h4>Automation & MIS Consultant</h4>
-
-                <p class="subtitle">
-                    Freelance / Contract | 11/03/2024 – 20/01/2025
-                </p>
-
+                <p class="subtitle">Freelance / Contract | 11/03/2024 – 20/01/2025</p>
                 <ul>
-
-                    <li>
-                        Worked with multiple companies to design
-                        customized operational automation systems.
-                    </li>
-
-                    <li>
-                        Designed and deployed Project Management
-                        Systems for manufacturing clients.
-                    </li>
-
-                    <li>
-                        Automated task assignment, progress tracking
-                        and reporting workflows.
-                    </li>
-
-                    <li>
-                        Developed a Doer Scoring Management System
-                        incorporating photo and location capture.
-                    </li>
-
-                    <li>
-                        Automated sales reporting including NBD and CRR
-                        workflows.
-                    </li>
-
-                    <li>
-                        Implemented WhatsApp and Email automation
-                        solutions.
-                    </li>
-
-                    <li>
-                        Created dynamic dashboards using Looker Studio.
-                    </li>
-
+                    <li>Worked with multiple companies to design customized operational automation systems.</li>
+                    <li>Designed and deployed Project Management Systems for manufacturing clients.</li>
+                    <li>Automated task assignment, progress tracking and reporting workflows.</li>
+                    <li>Developed a Doer Scoring Management System incorporating photo and location capture.</li>
+                    <li>Automated sales reporting including NBD and CRR workflows.</li>
+                    <li>Implemented WhatsApp and Email automation solutions.</li>
+                    <li>Created dynamic dashboards using Looker Studio.</li>
                 </ul>
-
             </div>
-
-
             <div class="resume-item">
-
                 <h4>MIS Officer</h4>
-
-                <p class="subtitle">
-                    Corporate Incentive Solutions Pvt. Ltd.
-                    | 16/01/2023 – 10/03/2024
-                </p>
-
+                <p class="subtitle">Corporate Incentive Solutions Pvt. Ltd. | 16/01/2023 – 10/03/2024</p>
                 <ul>
-
-                    <li>
-                        Created and maintained Google Sheets-based
-                        business panels.
-                    </li>
-
-                    <li>
-                        Automated reporting and data management processes.
-                    </li>
-
-                    <li>
-                        Created client leaderboards and reporting systems.
-                    </li>
-
-                    <li>
-                        Managed application check-in reports.
-                    </li>
-
-                    <li>
-                        Managed bulk email and WhatsApp communication
-                        workflows.
-                    </li>
-
+                    <li>Created and maintained Google Sheets-based business panels.</li>
+                    <li>Automated reporting and data management processes.</li>
+                    <li>Created client leaderboards and reporting systems.</li>
+                    <li>Managed application check-in reports.</li>
+                    <li>Managed bulk email and WhatsApp communication workflows.</li>
                 </ul>
-
             </div>
-
-
             <div class="resume-item">
-
                 <h4>MIS Officer</h4>
-
-                <p class="subtitle">
-                    Fujiyama Power System Pvt. Ltd. (UTL)
-                    | 16/08/2021 – 15/01/2023
-                </p>
-
+                <p class="subtitle">Fujiyama Power System Pvt. Ltd. (UTL) | 16/08/2021 – 15/01/2023</p>
                 <ul>
-
-                    <li>
-                        Created process-based flowcharts and monitoring systems.
-                    </li>
-
-                    <li>
-                        Monitored, controlled and validated employee processes.
-                    </li>
-
-                    <li>
-                        Created daily task and reporting systems.
-                    </li>
-
-                    <li>
-                        Built KPI/KRA-based employee performance reporting.
-                    </li>
-
+                    <li>Created process-based flowcharts and monitoring systems.</li>
+                    <li>Monitored, controlled and validated employee processes.</li>
+                    <li>Created daily task and reporting systems.</li>
+                    <li>Built KPI/KRA-based employee performance reporting.</li>
                 </ul>
-
             </div>
-
-
             <div class="resume-item">
-
                 <h4>Freelancer Process Specialist</h4>
-
-                <p class="subtitle">
-                    Authridge Research Service Pvt. Ltd.
-                    | March 2019 – April 2020
-                </p>
-
+                <p class="subtitle">Authridge Research Service Pvt. Ltd. | March 2019 – April 2020</p>
                 <ul>
-
-                    <li>
-                        Worked as a freelance process specialist for
-                        a background verification service provider.
-                    </li>
-
+                    <li>Worked as a freelance process specialist for a background verification service provider.</li>
                 </ul>
-
             </div>
-
-
             <div class="resume-item">
-
                 <h4>Market Research and Processing Associate</h4>
-
-                <p class="subtitle">
-                    Ocrex Enterprises Pvt. Ltd.
-                    | Oct 2015 – August 2018
-                </p>
-
+                <p class="subtitle">Ocrex Enterprises Pvt. Ltd. | Oct 2015 – August 2018</p>
                 <ul>
-
-                    <li>
-                        Worked with a company developing automated
-                        bank reconciliation technology from paper
-                        bank statements.
-                    </li>
-
+                    <li>Worked with a company developing automated bank reconciliation technology from paper bank statements.</li>
                 </ul>
-
             </div>
-
         </div>
 
-
         <div class="resume-section">
-
             <h3>Education</h3>
-
-
             <div class="resume-item">
-
                 <h4>MBA</h4>
-
-                <p class="subtitle">
-                    Punjab Technical University | 2013
-                </p>
-
-                <ul>
-                    <li>Grades: 70%</li>
-                </ul>
-
+                <p class="subtitle">Punjab Technical University | 2013</p>
+                <ul><li>Grades: 70%</li></ul>
             </div>
-
-
             <div class="resume-item">
-
                 <h4>B.Com</h4>
-
-                <p class="subtitle">
-                    DAV College Sector 10 Chandigarh | 2011
-                </p>
-
-                <ul>
-                    <li>Grades: 963/1800</li>
-                </ul>
-
+                <p class="subtitle">DAV College Sector 10 Chandigarh | 2011</p>
+                <ul><li>Grades: 963/1800</li></ul>
             </div>
-
-
             <div class="resume-item">
-
                 <h4>12th Grade</h4>
-
-                <p class="subtitle">
-                    DAV School Chandigarh | 2008
-                </p>
-
-                <ul>
-                    <li>Grades: 60%</li>
-                </ul>
-
+                <p class="subtitle">DAV School Chandigarh | 2008</p>
+                <ul><li>Grades: 60%</li></ul>
             </div>
-
-
             <div class="resume-item">
-
                 <h4>10th Grade</h4>
-
-                <p class="subtitle">
-                    Mount Carmel School Chandigarh | 2005
-                </p>
-
-                <ul>
-                    <li>Grades: 67%</li>
-                </ul>
-
+                <p class="subtitle">Mount Carmel School Chandigarh | 2005</p>
+                <ul><li>Grades: 67%</li></ul>
             </div>
-
         </div>
-
 
         <div class="resume-section">
-
             <h3>Technical Skills</h3>
-
             <p>
-                AI Automation, AI Integrations, Python, SQL, Google Apps Script,
-                Google Sheets, Excel, API Integration, Workflow Automation,
-                HTML, CSS, JavaScript, Web Applications, Business Portals,
-                Power BI, Looker Studio, AppSheet, GitHub, Git, Render,
-                Email Automation, WhatsApp Automation, MIS Reporting,
-                Data Analysis, Process Optimization, KPI/KRA Systems,
-                CRM Management, Project Management, FMS, PMS, NBD,
-                CRR, Google Forms, HTML Forms, Dashboard Development,
-                Reporting Automation, SAP FICO Knowledge, Accounting Knowledge,
-                Problem Solving and Business Process Design.
+                AI Automation, AI Integrations, Python, SQL, Google Apps Script, Google Sheets, Excel, API Integration, Workflow Automation, HTML, CSS, JavaScript, Web Applications, Business Portals, Power BI, Looker Studio, AppSheet, GitHub, Git, Render, Email Automation, WhatsApp Automation, MIS Reporting, Data Analysis, Process Optimization, KPI/KRA Systems, CRM Management, Project Management, FMS, PMS, NBD, CRR, Google Forms, HTML Forms, Dashboard Development, Reporting Automation, SAP FICO Knowledge, Accounting Knowledge, Problem Solving and Business Process Design.
             </p>
-
         </div>
-
     </section>
-
 
     <!-- =========================
          CONTACT
     ========================== -->
-
     <section id="contact">
-
         <h2>Contact</h2>
-
         <p>
-            I'm open to opportunities involving
-            <strong>AI automation, business automation,
-            MIS transformation, workflow systems and
-            process digitization.</strong>
+            I'm open to opportunities involving <strong>AI automation, business automation, MIS transformation, workflow systems and process digitization.</strong>
         </p>
-
-        <p>
-            Email:
-            <a href="mailto:himanshusehgal320@gmail.com">
-                himanshusehgal320@gmail.com
-            </a>
-        </p>
-
-        <p>
-            Phone:
-            +918569890156
-        </p>
-
-        <p>
-            LinkedIn:
-            <a
-                href="https://www.linkedin.com/in/himanshu-s-585a0a201"
-                target="_blank"
-            >
-                linkedin.com/in/himanshu-s-585a0a201
-            </a>
-        </p>
-
-        <p>
-            GitHub:
-            <a
-                href="https://github.com/himanshusehgal-code"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                GitHub Profile
-            </a>
-        </p>
-
-        <p>
-            YouTube:
-            <a
-                href="https://www.youtube.com/@sehgal_sheet_tricks3306"
-                target="_blank"
-            >
-                youtube.com/@sehgal_sheet_tricks3306
-            </a>
-        </p>
-
+        <p>Email: <a href="mailto:himanshusehgal320@gmail.com">himanshusehgal320@gmail.com</a></p>
+        <p>Phone: +918569890156</p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/himanshu-s-585a0a201" target="_blank" rel="noopener noreferrer">linkedin.com/in/himanshu-s-585a0a201</a></p>
+        <p>GitHub: <a href="https://github.com/himanshusehgal-code" target="_blank" rel="noopener noreferrer">GitHub Profile</a></p>
+        <p>YouTube: <a href="https://www.youtube.com/@sehgal_sheet_tricks3306" target="_blank" rel="noopener noreferrer">youtube.com/@sehgal_sheet_tricks3306</a></p>
     </section>
-
 
     <div class="footer-note">
         Himanshu Sehgal | AI Automation & Business Systems Developer
     </div>
-
 </div>
-
 
 <!-- =========================
      PRINT / PDF
