@@ -3,9 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Himanshu Sehgal | AI Automation & Business Systems Developer</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<!-- Self-contained GitHub Pages build: no third-party runtime assets -->
 
 <style>
 
@@ -32,7 +30,7 @@
     }
 
     body {
-        font-family: 'Roboto', sans-serif;
+        font-family: Arial, Helvetica, sans-serif;
         background: var(--bg);
         color: var(--text-light);
         display: flex;
@@ -73,6 +71,17 @@
 
     .profile-img:hover {
         transform: scale(1.05);
+    }
+
+    .profile-avatar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--accent);
+        color: var(--bg);
+        font-size: 2.6rem;
+        font-weight: 900;
+        user-select: none;
     }
 
     .sidebar h2 {
@@ -676,11 +685,9 @@
 
 <div class="sidebar">
 
-    <img
-        class="profile-img"
-        src="https://i.postimg.cc/RJfcGcSS/IMG-20230123-WA0002.jpg"
-        alt="Himanshu Sehgal Profile"
-    />
+    <div class="profile-img profile-avatar" role="img" aria-label="Himanshu Sehgal profile">
+        HS
+    </div>
 
     <h2>Himanshu Sehgal</h2>
 
@@ -1278,14 +1285,8 @@
             </a>
 
 
-            <button id="generatePdfBtn" class="download-btn">
-
-                <span class="loader" id="pdfLoader"></span>
-
-                <span id="pdfBtnText">
-                    Download Profile
-                </span>
-
+            <button id="generatePdfBtn" class="download-btn" type="button">
+                Print / Save Profile as PDF
             </button>
 
         </div>
@@ -1636,8 +1637,9 @@
         <p>
             GitHub:
             <a
-                href="https://github.com/"
+                href="https://github.com/himanshusehgal-code"
                 target="_blank"
+                rel="noopener noreferrer"
             >
                 GitHub Profile
             </a>
@@ -1664,114 +1666,36 @@
 
 
 <!-- =========================
-     PDF GENERATION
+     PRINT / PDF
 ========================== -->
-
 <script>
-
-    document
-        .getElementById('generatePdfBtn')
-        .addEventListener('click', function () {
-
-            const btn = this;
-
-            const loader =
-                document.getElementById('pdfLoader');
-
-            const btnText =
-                document.getElementById('pdfBtnText');
-
-            loader.style.display = 'inline-block';
-
-            btnText.innerText =
-                'Generating PDF...';
-
-            btn.disabled = true;
-
-
-            const element =
-                document.getElementById('portfolio-body');
-
-
-            const buttonsDiv =
-                document.querySelector(
-                    '.resume-download-buttons'
-                );
-
-
-            buttonsDiv.style.display = 'none';
-
-
-            const opt = {
-
-                margin: [0.2, 0.2, 0.2, 0.2],
-
-                filename:
-                    'Himanshu_Sehgal_AI_Automation_Profile.pdf',
-
-                image: {
-                    type: 'jpeg',
-                    quality: 0.98
-                },
-
-                html2canvas: {
-                    scale: 2,
-                    useCORS: true,
-                    logging: false
-                },
-
-                jsPDF: {
-                    unit: 'in',
-                    format: 'a4',
-                    orientation: 'portrait'
-                }
-
-            };
-
-
-            html2pdf()
-                .set(opt)
-                .from(element)
-                .save()
-                .then(() => {
-
-                    loader.style.display = 'none';
-
-                    btnText.innerText =
-                        'Download Profile';
-
-                    btn.disabled = false;
-
-                    buttonsDiv.style.display =
-                        'flex';
-
-                })
-                .catch((err) => {
-
-                    console.error(
-                        'PDF generation failed:',
-                        err
-                    );
-
-                    loader.style.display = 'none';
-
-                    btnText.innerText =
-                        'Error! Try Again';
-
-                    btn.disabled = false;
-
-                    buttonsDiv.style.display =
-                        'flex';
-
-                    alert(
-                        'PDF generate karte waqt issue aaya. Please try again.'
-                    );
-
-                });
-
-        });
-
+document.getElementById('generatePdfBtn').addEventListener('click', function () {
+    window.print();
+});
 </script>
+
+<style>
+@media print {
+    .sidebar,
+    .resume-download-buttons,
+    .footer-note {
+        display: none !important;
+    }
+    body {
+        display: block;
+        background: #fff;
+        color: #111;
+    }
+    .main {
+        max-width: none;
+        padding: 0;
+    }
+    section {
+        max-width: none;
+        page-break-inside: avoid;
+    }
+}
+</style>
 
 </body>
 </html>
